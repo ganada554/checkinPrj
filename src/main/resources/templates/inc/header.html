@@ -1,0 +1,20 @@
+<html xmlns:th="http://www.themeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+</head>
+
+<body>
+    <header th:fragment="header">
+        <section class="header">
+            <div class="logo">
+                <a href="/index.html" th:href="@{/index}">책크인</a>
+            </div>
+                 <a href="mypage/index.html" th:href="@{/mypage}"> 
+			<img th:src="${session.member==null} ? @{/images/profile.png} : (${session.member.profileImg}?:@{/images/profile.png})" class="profile-img" />
+                 </a>
+        </section>
+    </header>
+</body>
+
+</html>

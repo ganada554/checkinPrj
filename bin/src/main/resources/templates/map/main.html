@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.themeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorator="/inc/layout">
+
+<head>
+	<meta charset="UTF-8">
+  	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>책크인</title>
+	<link href="/css/common.css" type="text/css" rel="stylesheet">
+	<link href="/css/map/main.css" type="text/css" rel="stylesheet">
+	<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=41cefddc70d106e89cd2a27e1221cba6"></script>
+	<script src="/js/map/main.js"></script>
+</head>
+<body>
+	<main id="main" layout:fragment="main">
+		<section class="search-section">
+			<form method="get">
+				<div class="search-bookstore">
+					<input class="font" type="text" placeholder="가고 싶은 서점을 검색하세요">
+					<a href=""><img src="/images/search.png"></a>
+				</div>			
+			</form>
+		</section>
+		<section class="map-section">
+			<div>내 주변 독립서점</div>
+			<div id="map">
+			</div>
+		</section>
+		<section class="nearby-stamp">
+			<div>내 주변 스탬프 투어</div>
+			<div class="stamptour-info">
+				<a href=""><img class="stamptour-img" src="/images/bookstampImg1.jpg"></a>
+				<div class="stamptour-content">도장 찍는 재미! <br/> 강남구 독립서점으로 스탬프 투어를 떠나보세요</div>
+			</div>
+		</section>
+	</main>
+</body>

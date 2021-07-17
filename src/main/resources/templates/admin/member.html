@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.themeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorator="/inc/layout">
+
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link href="/css/admin/member.css" rel="stylesheet">
+<link href="/css/common.css" rel="stylesheet">
+<script src="/js/admin/member.js"></script>
+<title>회원 관리 페이지</title>
+</head>
+
+	<main layout:fragment="main">
+		<div class="title">ADMIN</div>
+		<nav class="mini-nav">
+			<a href="/admin/bookstore">서점</a>
+			<a href="/admin/member" class="mini-nav-page">회원</a>
+			<a href="/admin/review">리뷰</a>
+			<a href="/admin/hash/list">해시태그</a>
+		</nav>
+
+		<section>
+			<form class="operation">
+					<select name="p">
+						<option value="">전체</option>
+						<option value="3">회원</option>
+						<option value="2">서점지기</option>
+						<option value="1">관리자</option>
+					</select>
+					<div>
+						<input type="text" name="q">
+						<input type="submit" class="btn" value="검색">
+					</div>
+				</form>
+					<th:if text="${position} == null || ${query} == null">
+						<span th:text="${count}+'명 /'"></span>
+					</th:if>
+						<span th:text="'총 '+${entireCount}+명"></span>
+					
+			<div th:each="m : ${member}" class="card">
+				<img th:src="${m.profileImg}?:@{/images/profile.png}" class="card-img">
+				<div class="hi-span">
+					<span th:text="'닉네임: '+${m.nickname}">닉네임</span>
+					<span th:text="'이메일: '+${m.email}">이메일</span>
+					<span th:text="'가입일: '+${#calendars.format(m.regDate, 'yyyy-MM-dd')}">가입일</span>
+					<span th:text="'권한: '+(${m.positionId} !='3'? (${m.positionId} !='2'? '관리자': '서점지기'): '회원')">직급</span>
+				</div>
+				<div class="btn-list">
+					<a class="btn assign-btn">임명</a>
+					<span class="assign-list d-none">
+						<a th:href="@{/admin/member/1(id=${m.id})}">관리자</a>
+						<a th:href="@{/admin/member/2(id=${m.id})}">서점지기</a>
+						<a th:href="@{/admin/member/3(id=${m.id})}">회원</a>
+					</span>
+					<a th:href="@{/admin/member/delete(id=${m.id})}" class="btn"  onclick="if(!confirm('정말 탈퇴시키겠습니까?')) return false;" >탈퇴</a>
+					<input type="hidden" value="${m.id}">
+				</div>
+			</div>
+
+		</section>
+	</main>
+</html>

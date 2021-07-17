@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+    
+<mapper namespace="com.checkin.web.dao.HashtagDao">
+	
+	<select id="get" resultType="com.checkin.web.entity.Hashtag">
+		select * from hashtag where id = #{id}
+     </select>
+     
+     <select id="getIdByName" resultType="int">
+		select id from hashtag where name = #{name}
+     </select>
+      
+     <select id="getCount" resultType="int">
+     	select count(id) cnt from hashtag
+     </select>
+     
+     <select id="getList" resultType="com.checkin.web.entity.Hashtag">
+        select * from hashtag 
+		   <where>  
+		   		<if test="query != null">Name like '%${query}%'</if>
+		   </where>
+		   <!-- #{} 이 아니라 ${}인 이유 : String이 오면 #인 경우 ''이 들어오기 때문 -->
+		   <!-- like인 이유 : %라는 정규식을 쓰기 때문이다 -->
+     </select> 
+        
+     <insert id="insert" parameterType="com.checkin.web.entity.Hashtag">
+     	insert into hashtag(name)
+     	values(#{name})
+     </insert>
+     
+     <delete id="delete" parameterType="int">
+ 		delete from hashtag where id = #{id} 
+     </delete>
+</mapper>

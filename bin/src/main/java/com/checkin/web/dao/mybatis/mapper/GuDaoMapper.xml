@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.checkin.web.dao.GuDao">
+
+	<select id="getList" resultType="com.checkin.web.entity.Gu">
+		select * from gu
+		<where>  
+		      <if test="id != null">id = #{id}</if>
+		</where>
+	</select> 
+
+	<select id="getGuById" resultType="String">
+		select name from gu
+		<where>  
+		      <if test="id != null">id = #{id}</if>
+		</where>
+	</select> 
+</mapper>

@@ -1,0 +1,118 @@
+@charset "UTF-8";
+
+.input{
+	border-radius: 10px;
+	border: 1px solid gray;
+	padding: 10px;
+}
+input {
+	font-family: 'TmoneyRoundWindRegular';
+}
+
+form{
+	display: flex;
+	flex-direction: column;
+}
+
+.btn-list{
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	
+	text-align: center;
+	margin: 20px;
+}
+
+.btn-list .btn{
+	padding: 14px;
+}
+
+.btn-list input {
+	font-size: 15px;
+}
+
+input[type="submit"]{
+	margin-bottom: 30px;	
+}
+
+.btn-list a.btn{
+	background-color: var(--secondary);
+}
+
+.btn-list *{
+	margin: 4px;
+}
+
+.none{
+	   	border: none;
+    	background-color: initial;
+    	text-decoration: underline;
+    	text-underline-position: under;
+}
+	
+	.animation{
+		color: red;
+	 	animation-duration: 0.75s;
+	 	animation-name: slidein;
+	}
+
+		@keyframes slidein {
+		  from {
+		    margin-right: 15%;
+		    white-space: nowrap;
+		    opacity: 0.3;
+		  }
+		
+		  to {
+		    margin-right: 0%;
+		    text-align: right;
+		  }
+		}
+
+.pwd-align, .nick-align{
+	display: flex;
+	justify-content: space-between;
+	align-content: center;
+	position: relative;
+}
+
+	.pwd-type{
+		position:absolute;
+		bottom: -33px;
+		right: 10px;
+		
+		width: 30px;
+		height: 30px;
+		opacity: 0.3;
+		z-index: 10;
+	}
+
+	.nick-type{
+		position:absolute;
+		bottom: -33px;
+		right: 6px;
+		
+		width: 90px;
+		height: 30px;
+		z-index: 10;
+	}
+
+	.pwd-type:hover{
+		opacity: 1;
+	}
+
+	label{
+		line-height: 30px;
+	}
+
+	.height{
+		display:flex;
+		flex-direction: column;
+		height: 60px;
+	}
+	
+.error-message, .nickname-message, .rerror-message{
+	text-align: right;
+	font-size: 13px;
+	margin: 5px;
+}

@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+ layout:decorator="/inc/layout">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="/css/admin/member.css" rel="stylesheet">
+    <link href="/css/common.css" rel="stylesheet">
+    <script src="/js/admin/hash/list.js"></script>
+    <title>해시태그 관리 페이지</title>
+</head>
+<body>
+    <main layout:fragment="main">
+        <div class="title">ADMIN</div>
+        <nav class="mini-nav">
+            <a href="">서점</a>
+            <a href="" >회원</a>
+            <a href="">스탬프 투어</a>
+            <a href="">후기</a>
+            <a href="" class="mini-nav-page">해시태그</a>
+        </nav>
+
+        
+        <form action="/admin/hash/result" method="post" >
+            <div class="operation">
+                <!--select와 검색 중 하나만 하기 추천
+                    둘 다 구현은 너무 번거로움-->
+                <input type="text" name="q" value="" th:value="${param.q}">
+                <input type="submit" class="btn" value="검색">
+                <!-- 검색버튼을 a태그로 만들 경우 자바스크립트가 필요 -->
+            </div>
+        </form>
+	
+			<div>
+				<a href="" class="btn">추가</a>
+                <a href="" class="btn">삭제</a>
+			</div>
+
+
+            <div class="card" th:each="h:${list}">
+                <div class="hi-span" >
+                    <span th:text="${h.name}" >#해시태그</span>
+                </div>
+            </div>
+    </main>
+</body>
+
+</html>

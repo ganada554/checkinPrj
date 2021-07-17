@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+    
+<mapper namespace="com.checkin.web.dao.ReviewDao">
+	
+	<resultMap type="com.checkin.web.entity.ReviewView" id="reviewMap">
+        <result column="bookstore_id" property="bookstoreId"/>
+        <result column="profile_img" property="profileImg"/>
+        <result column="bookstore_name" property="bookstoreName"/>
+        <result column="bookstore_gu" property="bookstoreGu"/>
+        <result column="hashtag_name" property="hashtagName"/>
+	</resultMap>
+	
+	<resultMap type="com.checkin.web.entity.ReviewView2" id="review2Map">
+        <result column="bookstore_id" property="bookstoreId"/>
+        <result column="profile_img" property="profileImg"/>
+        <result column="bookstore_name" property="bookstoreName"/>
+        <result column="bookstore_gu" property="bookstoreGu"/>
+        <result column="hashtag_id" property="hashtagId"/>
+        <result column="hashtag_name" property="hashtagName"/>
+        <result column="rating_id" property="ratingId"/>
+        <result column="rating_name" property="ratingName"/>
+        
+	</resultMap>
+	
+	<select id="getViewList" resultMap="review2Map"> <!-- 반환할 때 사용되는 그릇의 형식 적기 -->
+    	select * from review_view2
+    	<where>
+    	<if test="gu != null and gu != ''"> <!-- gu == '지역별' 문자열일 때도 where 조건 실행 안되게 하기 -->
+    		bookstore_gu = #{gu}  	
+    	</if>    	
+    	</where>
+    	order by regdate desc
+    </select>
+    
+    <select id="get" resultMap="review2Map">
+		select * from review_view2 where id = #{id}
+    </select>
+    
+    <select id="getMember" resultMap="reviewMap">
+		select * from review where member_id = #{memberId}
+    </select>
+    
+    <insert id="insert">  
+		insert into review(content, img, bookstore_id, member_id) 
+		values(#{review.content}, #{review.img}, #{review.bookstoreId}, #{review.memberId}); 
+    	<selectKey resultType="int" keyProperty="id" order="BEFORE">
+		    select id from review_view2 order by id desc limit 1;
+			<!-- select LAST_INSERT_ID() as id; -->
+		</selectKey>
+		insert into hashtag_review(review_id, hashtag_id) 
+		values(#{id}+1, #{hreview.hashtagId});
+		insert into rating_review(review_id, rating_id) 
+		values(#{id}+1, #{rreview.ratingId});
+    </insert>
+    
+    <update id="update">
+    	update review
+    	<set>
+    		<if test="review.content != null">content = #{review.content},</if>
+    		<if test="review.img != null">img = #{review.img},</if>    		
+    		<if test="review.bookstoreId != null">bookstore_id = #{review.bookstoreId},</if>
+    	</set>
+	    where id = #{review.id};    
+	    update hashtag_review
+    	<set>
+    		<if test="hreview.hashtagId != null">hashtag_id = #{hreview.hashtagId},</if>
+    	</set>
+    	where review_id = #{review.id};  
+    	update rating_review
+    	<set>
+    		<if test="rreview.ratingId != null">rating_id = #{rreview.ratingId},</if>
+    	</set>
+    	where review_id = #{review.id};  
+    </update>
+    
+    <delete id="delete" parameterType="int">
+    	delete from review where id = #{id}
+    </delete>
+    
+</mapper>
+  

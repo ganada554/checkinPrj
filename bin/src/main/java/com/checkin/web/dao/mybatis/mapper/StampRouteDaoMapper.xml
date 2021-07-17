@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+    
+<mapper namespace="com.checkin.web.dao.StampRouteDao">
+	
+	<select id="get" resultType="com.checkin.web.entity.StampRoute">
+		select * from stamp_route where id = #{id}
+     </select>
+  
+       <select id="getList" resultType="com.checkin.web.entity.StampRoute">
+        select * from stamp_route 
+		   <where>  
+		   		<if test="query != null">Gu_name = #{query}</if>
+		   </where>
+     </select> 
+   
+</mapper>

@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.themeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorator="/inc/layout">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="/css/bookstamp/main.css" type="text/css" rel="stylesheet">    
+    <link href="/css/common.css" rel="stylesheet">  
+    <title>서울지역</title>
+</head>
+	<main layout:fragment="main">   
+        <h1 class="title"></h1>
+        <section class="spacing">
+        
+      		<span>ㄱ</span>
+        	<div class="slide">
+                <div th:each="gu, i:${gu}" th:if="${i.index}<8" class="imgdiv">
+                	<a th:href="@{/bookstamp/detail(id=${gu.id})}">
+                    <img class="img" th:src="${gu.img}?:@{/images/bookstampImg1.jpg}"></a>
+                </div>
+             </div>
+            
+            
+            <span>ㄴ~ㄷ</span>
+            <div class="slide">
+                <div  th:each="gu, i:${gu}" th:if="7< ${i.index} and ${i.index} <12" class="imgdiv">
+                	<a th:href="@{/bookstamp/detail(id=${gu.id})}"  >
+                    <img class="img" th:src="${gu.img}?:@{/images/bookstampImg1.jpg}"></a>
+                </div>
+            </div>
+                
+            <span>ㅁ~ㅅ</span>
+            <div class="slide">
+                <div th:each="gu, i:${gu}" th:if="11<${i.index} and ${i.index}<18" class="imgdiv">
+                	<a th:href="@{/bookstamp/detail(id=${gu.id})}"  >
+                    <img class="img" th:src="${gu.img}?:@{/images/bookstampImg1.jpg}"></a>
+                </div>
+            </div>
+                
+            <span>ㅇ</span>
+            <div class="slide">
+                <div  th:each="gu, i:${gu}" th:if="17<${i.index} and ${i.index}<22" class="imgdiv">
+                	<a th:href="@{/bookstamp/detail(id=${gu.id})}"  >
+                    <img class="img" th:src="${gu.img}?:@{/images/bookstampImg1.jpg}"></a>
+                </div>
+            </div>
+                
+            <span>ㅈ</span>
+            <div class="slide">
+                <div  th:each="gu, i:${gu}" th:if="21<${i.index}" class="imgdiv">
+                	<a th:href="@{/bookstamp/detail(id=${gu.id})}"  >
+                    <img class="img" th:src="${gu.img}?:@{/images/bookstampImg1.jpg}"></a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+</html>

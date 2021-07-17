@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.themeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorator="/inc/layout"> 
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="/css/mypage/stamp.css" rel="stylesheet">
+    <link href="/css/common.css" rel="stylesheet">
+    <title>stamp</title>
+</head>
+    <main layout:fragment="main">
+        <div class="title">내 스탬프</div>
+        
+        <section>
+        <form class="operation">
+	            <select name="gu">
+	            	<option value="">전체</option>
+	                <option th:each="gu: ${guName}" th:text="${gu.name}" th:selected="${selectedGu}!=null?${selectedGu} == ${gu}">관악구</option>
+	            </select>
+	            <input type="submit" class="btn" value="검색">
+	            <span class="hi-span">
+		            <span th:text="${count}+' 스탬프'"></span>
+		            <span th:text="'/ 총 '+ ${entireCount}+' 스탬프'"></span>
+	            </span>
+          </form>
+          </section>
+	            
+	        <section class="stamp-menu">
+	        
+				<a href="" class="each-icon" th:each = "b:${bookstore}">
+	          		<img th:if="${date.get(b.id)}" class="stamp-class" th:src="@{/images/stamp.png}">
+	          		<img class="icon-img" th:src="${b.logoImg}?:@{/images/books.png}">
+                	<span class="hi-span">
+	                	<span class="small-font" th:text="${date.get(b.id)}?:null"></span><br>
+	                	<span th:text="${b.name}">서점 이름</span>
+                	</span>
+               	</a>
+               	
+	  		 </section>
+	  
+	</main>
+</html>

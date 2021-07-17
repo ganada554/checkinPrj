@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.themeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorator="/inc/layout">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="/css/inc/login.css" type="text/css" rel="stylesheet">
+    <link href="/css/common.css" type="text/css" rel="stylesheet">
+    <script src="/js/login/signup.js" type="text/javascript"></script>
+    <title>sign up</title>
+</head>
+
+<body>
+      <main layout:fragment="main">
+		<div class="title">회원가입</div>
+		<section>
+			<form method="post">
+			<div class="error-message animation d-none">부적합한 항목이 있습니다</div>
+				
+				<label>EMAIL</label>
+				<span class="height">
+					<input type="text" class="input" name="email" value="">
+					<span class="error-message">이메일 형식으로 입력하세요</span>
+				</span>
+				
+				
+				<div class="nick-align">
+                	<label>NICKNAME</label>
+             	  	<input type="button" class="btn nick-type" value="중복 체크">
+           		</div>
+           		<span class="height">
+					<input type="text" class="input" name="nickname" value="">
+					<span class="d-none nickname-message">사용 가능한 닉네임입니다</span>
+				</span>
+				
+				
+				<div class="pwd-align">
+                	<label>PASSWORD</label>
+             	  	<img src="/images/eye.png" class="pwd-type"></img>
+           	   </div>
+           	   <span class="height">
+					<input type="password" class="input" name="password" value="">
+					<span class="error-message">4 글자 이상, 20 글자 미만으로 입력하세요</span>
+				</span>
+				
+				
+			<div class="btn-list">
+				<input type="submit" class="btn" value="회원가입">
+			</div>
+			</form>
+		</section>
+	</main>
+</body>
+</html>

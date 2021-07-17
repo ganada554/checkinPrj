@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.themeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorator="/inc/layout">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="/css/mypage/dashboard.css" rel="stylesheet">
+    <link href="/css/common.css" rel="stylesheet">
+    <title>멤버 대시보드</title>
+</head>
+
+<body>
+    <main layout:fragment="main">
+        <div class="title">내 취향 분석</div>
+        <section class="profile-box" th:each="store:${store}">
+        <div class="profile-img"></div>
+    			<a href="" class="btn modify-btn" type="submit">서점 정보 편집</a>
+		         <div class="my-info">
+	                <span th:text="${store.name}">북스토어에서 멤버아이디의 정보를 얻어서 다 가져와</span>
+	                <span th:text="${store.location}"></span>
+	                <span th:text="${store.operatingTime}"></span>
+	                
+	                <span th:text="${store.instagramUrl}"></span>
+	                <span th:text="${store.operatingTime}"></span>
+	            </div>
+        </section>
+
+		<section>
+		<div class="title"> 서점 이용 현황 </div>
+          <div class="dash-board">
+          		좋아하는 서점의 공통점:
+          		
+	            후기 남긴 서점의 공통점:
+          </div>
+         </section>
+          
+          <section>
+          <div class="title"> 선호 해시태그 관리 </div>
+           <div class="dash-board">
+	             내가 좋아하는 해시태그: <span> 해시태그 다 쌔벼</span>
+	             <a href="" class="btn modify-</btn" type="submit">수정</a>
+	             '좋아요'한 후기의 해시태그: <span></span>
+           		 '좋아요'한 서점의 해시태그: <span> </span>
+          </div>
+          </section>
+    </main>
+</body>
+
+</html>

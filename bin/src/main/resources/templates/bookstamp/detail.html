@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.themeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorator="/inc/layout">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+       <link href="/css/bookstamp/detail.css" type="text/css" rel="stylesheet">   
+    <title>QR스탬프지도</title>
+</head>
+	<main layout:fragment="main">
+	<div class="title" th:text="${guName}"></div>
+        <section>
+        <form>
+	        <select name="id">
+	            <option th:each="gu:${gu}" th:text = "${gu.name}" th:value="${gu.id}" th:selected="${param.id}==${gu.id}"></option>
+	        </select>
+	        <input type="submit" class="btn" value="검색">
+        </form>
+		</section>
+		
+		<section>
+			<div>
+			---------------지도 섹션---------------
+			</div>
+		</section>
+		
+		<section>
+			<div th:each="b:${bookstore}">
+				<img class="img" th:src="${b.logoImg}?:@{/images/books.png}">
+				<span th:text="${b.name}"></span>
+				<span th:text="${b.address}"></span>
+				<span th:text="${b.operatingTime}"></span>
+			</div>
+		</section>
+    </main>
+</html>

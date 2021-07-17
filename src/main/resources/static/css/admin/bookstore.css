@@ -1,0 +1,184 @@
+section{
+    padding-top: 40px;
+}
+select{
+    border-radius: 10px;
+}
+input {
+	font-family: 'TmoneyRoundWindRegular';
+}
+.btn-list {
+    display: flex;
+    justify-content: flex-end;
+}
+.btn {
+	font-size: 13px;
+    height: 28px;
+}
+.btn-list>a {
+    box-sizing: border-box;
+    display: flex;
+    align-items: center;
+    margin-left: 2px;
+}
+
+/*--mini nav--*/
+.mini-nav{
+    margin-top: 40px;
+    border-top: 1px solid black;
+    display: flex;
+}
+    .mini-nav a{
+        padding: 10px 5px;
+        flex-basis: 1;
+        text-align: center;
+        width:100%;
+        
+        font-size: 10px;
+    }
+    .mini-nav .mini-nav-page{
+        color: black;
+        border-bottom: 1px solid black;
+    }
+    
+   	.create-btn {
+   		display: inline-block;
+    	margin: 5px 0;
+   	}
+
+/*--filter--*/
+.operation{
+    display:flex;
+    justify-content: space-between;
+}
+input[type="text"]{
+    border-radius: 20px;
+    border: 1px solid gray;
+    padding: 5px;
+    padding-left: 10px;
+}
+
+/*--card--*/
+.card{
+    margin: 27px 0;
+    border-radius: 15px;
+    padding: 15px;
+    border: 1px solid black; 
+
+}
+form .card .popup .card{
+    padding: 0 15px 0 15px;
+
+}
+
+
+
+.popup .card{
+	 border: none;
+	 border-radius: 0;
+	 border-right: 1px solid var(--primary);
+     width: 90%;
+}
+    .card .card-img{
+        width: 50px;
+        height: 50px;
+        
+        display: inline-block;
+        border-radius: 10%;
+    }
+	
+	.card .hi-span .hi-span-nick{
+		font-size: 17px;
+	}
+    .card .hi-span div{
+        display:flex;
+        font-size: 11px;
+    }
+
+    .card .hi-span{
+        display: inline-block;
+        margin: 10px 10px;
+    }
+
+    .card .btn-list{
+        text-align: right;
+    }
+    
+section{
+	position: relative;
+}
+.create-btn{
+	text-align: center;
+}
+
+.popup{
+	position: fixed;
+	top: 30%;
+	width: 80%;
+	LEFT: 50%;
+	TRANSFORM: TRANSLATE(-50%, 0);
+	
+	background-color: white;
+	padding: 10px;
+	border-radius: 10px;
+	border: 1px solid var(--primary);
+	box-shadow: 2px 2px 10px #5d888d, -1px -1px 10px #89c8cf;
+}
+
+.popup>div{
+	display:flex;
+	overflow:scroll;
+	flex-wrap: nowrap;
+}
+.close{
+    width: 20px;
+    height: 20px;
+    position: absolute;  
+    right: 10px;
+    
+}
+
+.logo-img {
+	background-color: white;
+	width: 50px;
+	height: 50px;
+	border-radius: 50%;
+} 
+
+
+.bookstore-card{
+	border: 1px solid gray;
+	border-radius: 10px;
+	padding: 10px;
+	margin: 10px;
+}
+.tap-menu>span:nth-child(1) {
+	border-right: none;
+}
+
+	.bookstore-info .info>div {
+		display: flex;
+		line-height: 20px;
+	}
+			
+	.bookstore-info .info img {
+		width: 20px;
+		height: 20px;
+	}
+	
+	.bookstore-info .info div {
+		font-size: 12px;
+		margin: 0 0 2px 5px;
+	}
+	
+.bookstore-name{
+	position:relative;
+	display: flex;
+	align-items: center;
+	margin-bottom: 5px;
+	margin-left: 5px;
+}
+
+.bookstore-name div{
+	margin-left: 15px;
+}

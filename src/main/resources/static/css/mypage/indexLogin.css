@@ -1,0 +1,76 @@
+@charset "UTF-8";/*---utils---*/
+.title{
+    text-align: center;
+    margin: 30px 0;
+    font-size: 30px;
+}
+
+.profile-box{
+    border: 1px solid black;
+    padding: 15px 15px 10px 15px;
+    position:relative;
+    border-radius: 10px;
+}
+
+    .profile-box a{
+	    background-color: var(--primary);
+	    color: white;
+	    display: flex;
+    	border-radius: 10px;
+    	padding: 15px 10px;
+    	margin: 10px;
+    	justify-content: center;
+    	text-align: center;
+  		opacity: 0.9;
+    }
+    
+    .profile-box .kakao{
+    	background-color: #F7E600;
+    	color: #3A1D1D;
+    	margin-bottom: 30px;
+    }
+    
+    .profile-box a:hover{
+    	opacity: 1;
+	}
+
+    
+    .profile-box a.none{
+    	background-color: var(--secondary);
+    }
+    
+
+
+.dash-board{
+	margin:15px 0;
+    padding:20px;
+    border: 1px solid black;
+    border-radius: 15px;
+    text-align: center;
+    cursor: pointer;
+}
+
+.mypage-menu{
+    display:flex;
+    margin: 30px 0px;
+    position: relative;
+    justify-content: space-around;
+}
+    .mypage-menu .icon-img{
+        width:80px;
+        height:80px;
+        background-color: gray;
+        border-radius:50px;
+    }
+
+    .mypage-menu a span{
+        position:absolute;
+        bottom: -30px;
+        font-size: 13px;
+        text-align:center;
+        width: 80px;
+    }
+.center{
+    padding: 30px;
+    text-align: center;
+}

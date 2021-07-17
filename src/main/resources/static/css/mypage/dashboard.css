@@ -1,0 +1,77 @@
+/*---utils---*/
+.title{
+    text-align: center;
+    margin: 30px 0;
+    font-size: 30px;
+}
+
+.profile-box{
+    border: 1px solid black;
+    padding: 20px;
+    position:relative;
+    border-radius: 30px;
+}
+    .profile-box .modify-btn{
+        top: 20px;
+        right: 20px;
+        position: absolute;
+    }
+    
+    .profile-box .profile-img{
+        width:80px;
+        height:80px;
+        background-color: gray;
+        border-radius:50px;
+    }
+
+    .profile-box .my-info{
+        position: absolute;
+        top: 30px;
+        left: 120px;
+        display: flex;
+        flex-direction: column;
+    }
+        .profile-box .my-info span{
+            padding: 5px;
+        }
+
+
+    .profile-box .my-activity{
+        text-align: center;
+        margin-top: 25px;
+    }
+
+        .profile-box .my-activity span{
+            padding: 0 5px;
+            font-size: 12px;
+        }
+
+.dash-board{
+	margin:15px 0;
+    padding:20px;
+    border: 1px solid black;
+    border-radius: 20px;
+    text-align: center;
+    cursor: pointer;
+}
+
+.mypage-menu{
+    display:flex;
+    margin: 30px 0px;
+    position: relative;
+    justify-content: space-around;
+}
+    .mypage-menu .icon-img{
+        width:80px;
+        height:80px;
+        background-color: gray;
+        border-radius:50px;
+    }
+
+    .mypage-menu a span{
+        position:absolute;
+        bottom: -30px;
+        font-size: 13px;
+        text-align:center;
+        width: 80px;
+    }

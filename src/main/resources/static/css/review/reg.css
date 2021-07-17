@@ -1,0 +1,169 @@
+@font-face {
+    font-family: 'TmoneyRoundWindRegular';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_20-07@1.0/TmoneyRoundWindRegular.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
+html {
+    height: 100%;
+    margin: 0px;
+}
+
+body {
+    height: 100%;
+    font-family: 'TmoneyRoundWindRegular';
+}
+
+#main {
+	padding: 70px 0 60px 0;
+}
+
+ul, ol {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+a {
+    cursor: pointer;
+    color: initial;
+    text-decoration: initial;
+}
+
+.d-none {
+    display: none !important;
+}
+
+button {
+    border: 0;
+    outline: 0;
+}
+
+/* -------------------------------------------------------------- */
+
+.flex {
+    display: flex;
+}
+
+.align-center {
+    align-items: center;
+}
+
+.center {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+.font {
+    font-family: 'TmoneyRoundWindRegular';
+}
+
+.bold {
+	font-weight: bold;
+}
+
+.text-strong {
+	font-weight: bold;
+	color: rgb(250, 195, 43);
+}
+
+:root {
+    --text-color-basic: #464646 !important;
+    --text-color-light: #E2E2E2 !important;
+    --text-color-strong: #FD9F28 !important;
+    --bg-color-light: #FFFEFD !important;
+    --hover-color-bg: #EFF0F1;
+    --border-color-light: #E4E6E8;
+}
+
+.mt {
+	margin: 30px 0 3px 0;	
+}
+
+.selected {
+	background-color: #c8e6c9 !important;
+}
+
+
+/* -------------------------------------------------------------- */
+
+.bookstore-list {
+	width: 40%;
+    height: 30px;
+    font-size: 12px;
+    padding-left: 10px;
+    margin-bottom: 10px;
+}
+
+.img-upload-box {
+    position: relative;
+    background-color: rgb(224, 223, 223);
+    width: 100%;
+    height: 200px;
+    border-radius: 10px;
+    /* z-index: 999; */
+}
+
+    .img-upload-btn {
+        position: absolute;
+        bottom: 15px;
+        /* margin-left: auto;
+        margin-right: auto; */
+        left: 50%;
+        margin-left: -50px;
+        width: 100px;
+        height: 25px;
+        border-radius: 5px;
+        background-color: rgb(153, 151, 151);
+        font-weight: bold;
+        font-size: 11px;
+        color: white;  
+        cursor: pointer;   
+    }
+
+.hashtag-list>span {
+	display: inline-block;
+    background-color: #eeeeee;
+    padding: 4px 13px;
+    font-size: 13px;
+    border-radius: 10px;
+    margin: 5px 3px 0 0;
+}
+
+	.review-content {
+		border: 1px solid black;
+	    box-sizing: border-box;
+	    resize: none;
+	    width: 100%;
+	    height: 100px;
+	    font-size: 12px;
+	    padding: 7px;
+	}
+
+.rating-list>span {
+	display: inline-block;
+    background-color: #eeeeee;
+    padding: 4px 13px;
+    font-size: 13px;
+    border-radius: 10px;
+    margin: 5px 3px 0 0;
+}
+
+.button {
+	display: flex;
+	justify-content: center;
+}
+
+	.review-submit-btn {
+		margin-top: 40px;
+		width: 130px;
+	    height: 35px;
+	    background-color: rgb(207, 204, 204);
+	    border-radius: 5px;
+	    font-size: 14px;
+	    font-weight: bold;
+	    color: white;
+	    cursor: pointer;
+	}

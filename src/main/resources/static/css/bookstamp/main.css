@@ -1,0 +1,21 @@
+.slide{
+	display:flex;
+	overflow:scroll;
+	flex-wrap: nowrap;
+	margin-top: 10px;
+}
+
+.imgdiv{
+	text-align: center;
+}
+
+.slide .img{
+	width: 140px;
+	height: auto;
+	border-radius: 18px;
+	margin: 5px;
+}
+
+span{
+	font-weight: bold;
+}

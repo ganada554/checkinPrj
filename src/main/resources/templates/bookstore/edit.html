@@ -1,0 +1,90 @@
+<html xmlns:th="http://www.themeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorator="/inc/layout">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimun-scale=1.0, user-scalable=no">
+    <link href="/css/bookstore/insert.css" rel="stylesheet">
+    <link href="/css/admin/addrlinkSample.css" rel="stylesheet">
+    <link href="/css/common.css" rel="stylesheet">
+   	<script src="/js/bookstore/edit.js" type="text/javascript"></script>
+   	<script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
+    <title>서점 편집 페이지</title>
+</head>
+
+<body>
+    <main layout:fragment="main">
+    	<div class="title"> 서점 편집 페이지</div>
+        <section>
+         
+           <form method="post" enctype="multipart/form-data">
+           
+           		 <div class="file-section">
+		            <img class="bg-img" th:src="${b.bgImg}?:@{/images/bookstore.png}" />
+		            <a class="btn fake-btn">배경 업로드</a>
+		            <input type="file" name="file1" class="d-none real-btn" value="배경 이미지 업로드">
+		            
+		            <img class="logo-img" th:src="${b.logoImg}?:@{/images/books.png}" />
+		            <a class="btn fake-btn">로고 업로드</a>
+		            <input type="file" name="file2" class="d-none real-btn" value="로고 이미지 업로드">
+		        </div>
+		       	<div class="whynotright">
+		        	  <span class="rerror-message animation d-none">조건에 맞지 않는 항목이 있습니다</span>
+	         	 </div>
+    	       		<label>Name</label>
+	           		<span class="height">
+		                <input type="text" class="input" name="name" th:value="${b.name}">
+		                <span class="error-message">서점 이름을 입력하세요</span>
+	                </span>
+	                
+	                <div class="address">
+	               		<label>Address</label>
+		                <a class="address-btn btn">주소 찾기</a>
+	                </div>
+	                <span class="height hash-board-count">
+					 <input id="member_addr" type="text" name="address" class="input" th:value="${b.address}">
+	                 <span class="error-message"> 주소를 선택하세요</span>
+	                </span>
+	                
+	                <div class="gu">
+		                <label>Gu</label>
+	               		 <select name="guName">
+		                    <option th:each="gu:${guList}" th:text="${gu.name}" th:value="${gu.name}" th:selected="${gu.name}==${b.guName}">구</option>
+		                </select>
+						<br>
+                     <span class="error-message">구를 선택하세요</span>
+	                </div>
+	                
+					<label>Operation time</label>
+	           		<span class="height">
+		                <input type="text" class="input" name="operatingTime" th:value="${b.operatingTime}">
+		                <span class="error-message"> 요일과 운영 시간을 입력하세요</span>
+	                </span>
+	                
+                	<label>Instagram URL</label>
+	           		<span class="height">
+		                <input type="text" class="input" name="instagramUrl" th:value="${b.instagramUrl}">
+		                <span class="error-message">url 형식으로 입력하세요</span>
+	                </span>
+	
+	   	          	 <div class="hash-board hash">
+						 <div class="hash-board-count">
+		           			<span th:text="'전체 '+${hashCount}+' 개'"></span>
+		           			<span class="error-message">대표 해시태그를 선택하세요</span>
+	           			</div>
+	           			<span th:each="hash:${hashList}" >
+		          	 		<input type="radio" name="hashId" th:value="${hash.id}" class="hash-input"/>
+		           			<label th:text=${hash.name}></label>
+		          	 	</span>
+		          	 </div>
+	          	 	<div class="btn-list">
+	          	 		<input type="hidden" th:value="${b.id}">
+	            		<input type="submit" class="btn submit-btn" value="등록">
+	                </div>
+           </form>
+        </section>
+    </main>
+</body>
+
+</html>

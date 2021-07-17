@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.themeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorator="/inc/layout">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="/css/mypage/bookmark.css" rel="stylesheet">
+    <link href="/css/common.css" rel="stylesheet">
+    <title>bookmark</title>
+</head>
+    <main layout:fragment="main">
+        <section>
+        <div class="title">북마크</div>
+        </section>
+        <section class="bottom-section">
+        	<span class="small-title" th:text="${bookstore} == null
+        			?'아직 내가 좋아하는 서점이 없어요!'
+        			:'내가 좋아하는 서점은 '+${count}+'개예요!'"></span>
+        		
+	            
+	            <div th:if="${bookstore} != null" class="bookstore-card" th:each="b : ${bookstore}">
+	                <img th:src="${b.logoImg}?:@{/images/books.png}" class="card-img">
+	                <span class="hi-span">
+	                    <span th:text="${b.name}">서점 이름</span><br>
+	                    <span th:text="${b.address}" class="small-font">서점 주소</span><br>
+	                    <span th:text="${b.operatingTime}" class="small-font">서점 오픈시간</span><br>
+	                </span>
+	            </div>
+        </section>
+    </main>
+</html>

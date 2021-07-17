@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.themeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorator="/inc/layout">
+	
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>책크인</title>
+   	<link href="/css/common.css" type="text/css" rel="stylesheet">
+   	<link href="/css/bookstore/detail.css" type="text/css" rel="stylesheet">
+	<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=41cefddc70d106e89cd2a27e1221cba6"></script>
+	<script src="/js/bookstore/detail.js"></script>
+</head>
+<body>
+   	<main id="main" layout:fragment="main">
+    	<section class="bookstore-title">
+	    	<div th:each="b:${bookstore}"> 
+	    		<div class="edit-btn">
+	    			<a th:if="${member} == '1'" th:href="@{/admin/bookstore/edit/{id}(id=${b.id})}" class="btn">서점 정보 수정</a>
+				</div> 
+				<div class="parent-bookstore-img">
+		    		<img class="bookstore-img" th:src="${b.bgImg}?:@{/images/bookstore.png}">
+		    		<form id="bookmark-form">
+						<input class="bookstore-id" type="hidden" name="bookstoreId" th:value="${b.id}">
+			    		<img th:if="${bookmark} == 0" src="/images/blackstar1.png" class="bookmark"> 
+			    		<img th:if="${bookmark} == 1" src="/images/star.png" class="bookmarkAdded bookmark">   
+			    		<!-- th:if="${member == null}?onclick="alert(회원가입 시 서비스 이용이 가능합니다.')"" -->	
+					</form>				
+		    		<div class="bookstore-title-info">
+			    		<img class="logo-img" th:src="${b.logoImg}?:@{/images/books.png}">
+		    			<div>
+			    			<span class="name" th:text="${b.name}"></span>
+			    			<span class="hashtag" th:text="${b.hashtagName}"></span>	    			
+		    			</div>
+		    		</div>
+				</div>
+	    	</div>
+	    </section>    
+	    <section class="tap-menu">
+	    	<span class="selected">정보</span>
+	    	<span>리뷰</span>
+	    </section>
+	    <section class="bookstore-section">
+		    <div class="bookstore-info">
+		    	<div th:each="b:${bookstore}"> 
+		    		<div class="info">
+		    			<input type="hidden" th:value="${b.latitude}">
+		    			<input type="hidden" th:value="${b.longitude}">
+		    			<div>
+							<img src="/images/home.png">
+			    			<div class="address" th:text="${b.address}"></div>	    			
+		    			</div>
+		    			<div>
+							<img src="/images/instagram.png">
+		    				<div class="instagram" th:text="${b.instagramUrl}"></div>
+		    			</div>
+		    			<div>
+							<img src="/images/clock.png">
+		    				<div class="time" th:text="${b.operatingTime}"></div>
+		    			</div>
+		    		</div>
+		    	</div>
+		    </div>
+	    	<div id="map"></div>
+	    	<form method="post" action="/bookstore/detail/location" th:if="${member} == '1'">
+	    		<span>서점 위치 수정</span>
+				<div class="location-btn">
+		    		<input type="text" name="latitude" class="input font" placeholder="위도를 입력하세요">
+		    		<input type="text" name="longitude" class="input font" placeholder="경도를 입력하세요">
+		    		<input type="hidden" name="bookstoreId" th:value="${bookstore.id}">
+		    		<input type="submit" class="btn font" value="입력">
+	    		</div>   	
+	    	</form>
+	    </section>
+	    <section class="review-section d-none">	    
+    		<div th:each="r:${review}">
+	    		<div class="review-list">
+	    			<div class="review">
+	    				<img class="review-img" th:src="${r.imagePath}?:@{/images/location.png}">
+	    				<div class="review-content">
+	    					<div class="profile">
+								<img class="profile-img" th:src="${r.profileImg}" >
+		                        <div class="nickname font" th:text="${r.nickName}">치치</div>							    					
+	    					</div>
+	    					<div>	    					
+		    					<span>카테고리</span>
+			    				<div class="review-hashtag" th:text="${r.hashtagName}"></div>
+	    					</div>
+	    					<div>
+			    				<span>매력 포인트</span>
+					    		<div class="rating" th:text="${r.ratingName}"></div>	    					
+	    					</div>
+		    				<div class="content" th:text="${r.content}"></div>	    					
+						</div>
+	    			</div>
+	    		</div>	 
+	    		<hr>   		
+    		</div>
+	    </section>
+    </main>	
+</body>
+</html>

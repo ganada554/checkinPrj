@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+    
+<mapper namespace="com.checkin.web.dao.StampViewDao">
+
+<resultMap type="com.checkin.web.entity.StampView" id="StampMap">
+    <result column="Gu_name" property="guName"/>
+    <result column="Bookstore_id" property="bookstoreId"/>
+    <result column="Member_id" property="memberId"/>
+</resultMap>
+    
+ <resultMap type="com.checkin.web.entity.StampList" id="StampListMap">
+    <result column="Gu_name" property="guName"/>
+    <result column="reg_date" property="regDate"/>
+</resultMap>
+
+   	<select id="getStampList" resultMap="StampListMap">
+       select * from stamp_list order by reg_date desc
+    </select> 
+    
+	<select id="get" resultType="Date">
+        select reg_date from stamp_route_member
+        where Bookstore_id = #{bookstoreId}
+	          and Member_id = #{memberId}
+     </select> 
+     
+     <select id="getStampCount" resultType="Integer">
+        select count(*) from stamp_route_member
+        <where> 
+	        <if test="memberId != null">Member_id = #{memberId} </if>
+        </where>
+     </select>
+     
+     <select id="getStampAdminCount" resultType="Integer">
+        select count(Member_id) from stamp_route_member where Bookstore_id = #{bookstoreId}
+     </select>
+   
+        
+     <insert id="insert" parameterType="com.checkin.web.entity.StampView">
+     	insert into stamp_route_member(Bookstore_id, Member_id)
+     	values(#{bookstoreId}, #{memberId})
+     </insert>
+     
+</mapper>

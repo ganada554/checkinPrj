@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.themeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorator="/inc/layout">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="/css/mypage/index.css" rel="stylesheet">
+    <link href="/css/common.css" rel="stylesheet">
+    <title>my page</title>
+</head>
+
+<body>
+    <main layout:fragment="main">
+        <div class="title">마이페이지</div>
+        <section class="profile-box">
+             <img th:src="${member.profileImg}?:@{/images/profile.png}" class="profile-img" />
+	      
+	           <a href="/mypage/info" th:href="@{/mypage/info}" class="btn modify-btn" type="submit">수정</a>
+	            <div class="my-info">
+	                <span th:text="${member.nickname}+'(서점지기)'">nickname</span>
+	                <span th:text="${member.email}">email</span>
+	            </div>
+	
+	            <div class="my-activity">
+	                <span  th:text="'자주 가는 서점 '+${bookCount}">자주 가는 서점 2</span>
+	            </div>
+        </section>
+
+		<section>
+	    	 <div class="dash-board">
+	            <a href="" th:href="@{mypage/dashboard}">
+	                     서점 대시보드 바로가기
+	              </a>
+	          </div>
+		</section>
+		 <section class="mypage-menu">
+                <a href="/mypage/bookmark.html" th:href="@{mypage/bookmark}" class="icon-img">
+                	<span>북마크</span></a>
+                <a href="/mypage/stamp.html" th:href="@{mypage/stamp}" class="icon-img">
+                	<span>내 스탬프</span></a>
+                <a href="/mypage/review.html"  class="icon-img">
+                	<span>내 후기</span></a> 
+       	</section>
+      	 	 <div class="last-board">
+	       	   	<a class="btn">관리자 이메일</a>
+	           	<a th:href="@{/logout}" class="btn">로그아웃</a>
+           	</div>
+    </main>
+</body>
+
+</html>

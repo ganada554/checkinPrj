@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.themeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorator="/inc/layout">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="/css/mypage/bookmark.css" rel="stylesheet">
+    <link href="/css/common.css" rel="stylesheet">
+    <script src="/js/mypage/bookmark.js"></script>
+    <title>bookmark</title>
+</head>
+    <main layout:fragment="main">
+        <section>
+        <div class="title">북마크</div>
+        </section>
+        <section class="bottom-section">
+        	<input class="count" type="hidden" th:value="${count}">
+        	<span class="small-title" th:text="${bookstore} == null
+        			?'아직 내가 좋아하는 서점이 없어요!'
+        			:'내가 좋아하는 서점은 '+${count}+'개예요!'"></span>
+        		
+         	<div class="bookstore-info">
+				<div th:each="b:${bookstore}" class="bookstore-card"> 
+				<input class="bookmark" type="hidden" th:value="${b.id}">
+					<div class="bookstore-name">
+						<img class="logo-img" th:src="${b.logoImg}?:@{/images/books.png}">
+						<div th:text="${b.name}"></div>
+		    		</div>
+		    		<div class="info">
+		    			<div>
+							<img src="/images/home.png">
+			    			<div class="address truncate" th:text="${b.address}"></div>	    			
+		    			</div>
+		    			<div>
+							<img src="/images/instagram.png">
+		    				<div class="instagram truncate" th:text="${b.instagramUrl}"></div>
+		    			</div>
+		    			<div>
+							<img src="/images/clock.png">
+		    				<div class="time" th:text="${b.operatingTime}"></div>
+		    			</div>
+		    		</div>
+		    	</div>
+    		</div>
+        </section>
+    </main>
+</html>

@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.themeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorator="/inc/layout">
+
+<head>
+	<meta charset="UTF-8">
+  	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>책크인</title>
+	<link href="/css/common.css" type="text/css" rel="stylesheet">
+	<link href="/css/review/reg.css" type="text/css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Nanum+Gothic:wght@400;700;800&display=swap" rel="stylesheet">
+	<script src="/js/review/reg.js"></script>
+</head>
+<body>
+	<main id="main" layout:fragment="main">
+		<form id="form-content" th:action="@{reg}" th:object="${review}" method="post" enctype="multipart/form-data">
+			<section class="bookstore">
+			<h1 class="d-none">서점 선택</h1>
+				<select name="bookstore" class="bookstore-list font">
+					<option value="">서점 선택</option>
+					<option th:each="b:${bList}" th:value="${b.id}" th:text="${b.name}">최인아책방</option>
+				</select>
+			</section>
+			<section class="review-img">
+			<h1 class="d-none">리뷰 사진</h1>
+				<div class="img-upload-box">
+					<img src="">
+					<div class="img-upload-btn btn-sel center">이미지 업로드</div>
+	                <input type="file" name="image" class="btn-file d-none" /> <!--사용자가 파일에 직접 접근할 수 있게 해야 함-->
+	            </div>			
+			</section>
+			<section class="hashtag">
+				<div class="mt bold">해시태그</div>
+				<span th:each="h:${hList}" class="hashtag-list">
+					<span th:text="${h.name}"></span>
+					<input id="hashtag-id" type="hidden" th:value="${h.id}">			
+				</span>
+			</section>
+			<section class="reivew-content-container">
+				<div class="mt bold">서점에 다녀온 소감을 적어주세요!</div>
+				<div>
+					<textarea class="review-content font" name="content"></textarea>			
+				</div>
+			</section>
+			<section class="rating">
+				<div class="mt bold">매력 포인트</div>
+				<span th:each="r:${rList}" class="rating-list">
+					<span th:text="${r.name}"></span>
+					<input id="rating-id" type="hidden" th:value="${r.id}">
+				</span>				
+			</section>
+			<div class="button">
+				<input type="button" class="review-submit-btn font" value="등록">			
+			</div>
+		</form>	
+	</main>
+</body>
+</html>

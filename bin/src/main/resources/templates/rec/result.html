@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+ xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+ layout:decorator="/inc/layout">
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link href="/css/rec/result.css" rel="stylesheet">
+<link href="/css/common.css" rel="stylesheet">
+ 
+<title>추천탭 검색 결과 페이지</title>
+</head>
+
+
+<main layout:fragment="main">
+
+    <section id="search">
+        <input type="text" value="">
+        <input type="submit" value="검색">
+    </section>
+    
+    <section th:if="${#lists.isEmpty(list)}">
+    	<span><img src="/images/ndg.gif" style="width:290px">존재하지 않는 서점입니다</span>
+    </section>
+    
+    <section th:if="${not #lists.isEmpty(list)}" id="bookstore" th:each="b:${list}">
+        <div>
+            <div>
+                <img src="/images/bs.jpg">
+            </div>
+            <div class="bsInfo">
+                <span th:text="${b.name}">  책방이름</span>
+                <span>  #해시태그</span>
+                <span th:text="${b.address}">  서울시 마포구 ㅇㅇ동 ㅇㅇ번지</span>
+            </div>
+        </div>
+    </section>
+</main>
+</html>

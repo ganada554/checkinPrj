@@ -1,0 +1,271 @@
+@font-face {
+    font-family: 'TmoneyRoundWindRegular';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_20-07@1.0/TmoneyRoundWindRegular.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
+html {
+    height: 100%;
+    margin: 0px;
+}
+
+body {
+    height: 100%;
+    font-family: 'TmoneyRoundWindRegular';
+}
+
+ul, ol {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+a {
+    cursor: pointer;
+    color: initial;
+    text-decoration: initial;
+}
+
+.d-none {
+    display: none !important;
+}
+
+button {
+    border: 0;
+    outline: 0;
+}
+
+/* -------------------------------------------------------------- */
+
+.flex {
+    display: flex;
+}
+
+.align-center {
+    align-items: center;
+}
+
+.center {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+.font {
+    font-family: 'TmoneyRoundWindRegular';
+}
+
+.text-strong {
+	font-weight: bold;
+	color: rgb(250, 195, 43);
+}
+
+:root {
+    --text-color-basic: #464646 !important;
+    --text-color-light: #E2E2E2 !important;
+    --text-color-strong: #FD9F28 !important;
+    --bg-color-light: #FFFEFD !important;
+    --hover-color-bg: #EFF0F1;
+    --border-color-light: #E4E6E8;
+}
+
+hr {
+	margin: 17px 0;
+}
+
+.selected {
+	background-color: #d0e2e2;	
+}
+
+/* -------------------------------------------------------------- */
+
+#main {
+	padding: 70px 0 60px 0;
+}
+
+/* .link-btn {
+	display: flex;
+	align-items: center;
+	margin-bottom: 10px;
+	justify-content: space-between;
+} */
+
+.edit-btn {
+	text-align: right;
+	margin-bottom: 10px;
+}
+
+.parent-bookstore-img {
+	position: relative;	
+}
+.bookmark {
+	position: absolute;
+	width: 27px;
+	height: 27px;
+	background-color: white;
+    border-radius: 7%;
+    padding: 3px;
+    top: 4px;
+    right: 4px;
+}
+
+.bookstore-img {
+	width: 100%;
+	height: 180px;
+}
+
+.bookstore-title-info {
+	display: flex;
+	position: absolute;
+	left: 5px;
+	bottom: 9px;
+}
+
+.bookstore-title-info>div {
+	display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: center;
+    margin-left: 3px;
+}
+ 
+	.logo-img {
+		background-color: white;
+		width: 50px;
+		height: 50px;
+		border-radius: 50%;
+		border: 2px solid black;
+	} 
+	
+	.name, .hashtag {
+		background-color: white;
+		padding: 2px 3px;
+		border-radius: 6px;
+		border: 1px solid black;
+	}
+	
+	.name {
+		font-size: 14px;
+	}
+	
+	.hashtag {
+		align-self: flex-start;
+		font-size: 12px;
+		margin-top: 3px;
+	}
+	
+.tap-menu {
+	display: flex;
+	justify-content: center;
+	margin: 12px 20px;
+	font-size: 17px;
+	font-weight: bold;
+}
+	
+.tap-menu>span {
+	text-align: center;
+	padding: 3px 50px;
+    width: 100%;
+	border: 1px solid black;
+}
+
+.tap-menu>span:nth-child(1) {
+	border-right: none;
+}
+
+	.bookstore-info .info>div {
+		display: flex;
+		line-height: 20px;
+	}
+			
+	.bookstore-info .info img {
+		width: 20px;
+		height: 20px;
+	}
+	
+	.bookstore-info .info div {
+		font-size: 13px;
+		margin: 0 0 2px 5px;
+	}
+
+#map {
+	width: 100%; 
+	height: 230px;
+	border-radius: 10px;
+	margin: 10px 0 15px;
+}
+
+.review-section {
+	margin-top: 25px;
+}
+
+.review {
+	display: flex;
+}
+
+.review-content>div {
+	display: flex;
+	margin-bottom: 4px;
+	font-size: 13px;
+	align-items: center;
+	word-break: break-all;
+}
+
+	.review>.review-img {
+		width: 102px;
+		height: 105px;
+		margin-right: 15px;
+		border-radius: 5px;
+	}
+	
+	.profile {
+		display: flex;
+    	align-items: center;
+    	margin-bottom: 5px !important;
+	}
+	
+		.profile-img {
+			width: 30px;
+			height: 30px;
+			border-radius: 50%;
+			margin-right: 7px;
+		}
+		
+		.nickname {
+			font-size: 15px;
+		}
+	
+		.review-content>div>span {
+			background-color: #e0ebeb;
+			margin-right: 7px;
+			padding: 2px 3px;
+			border-radius: 7px;
+		}
+	
+		.content {
+			width: 95%;
+			border: 1px solid black;
+			border-radius: 5px;
+			padding: 4px;
+		}
+		
+form>span {
+	display: inline-block;
+	margin-bottom: 5px;
+	font-weight: bold;
+}		
+		
+form .location-btn {
+	margin-bottom: 11px;
+}
+form .location-btn>input {
+	padding: 5px;
+	font-size: 11.4px;
+}
+form .location-btn>input[type=submit] {
+	padding: 5px 11px;
+}
+form .edit-btn a {
+	background-color: var(--secondary);
+}

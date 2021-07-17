@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+    
+<mapper namespace="com.checkin.web.dao.MyStoreDao">
+	
+	
+     <select id="getList" resultType="Integer">
+        select Bookstore_id from bookmark_store where Member_id = #{id}
+     </select> 
+     
+     
+     <select id="getStoreCount" resultType="Integer">
+        select count(*) from bookmark_store where Bookstore_id = #{id}
+     </select>
+     
+      <select id="getMyCount" resultType="Integer">
+        select count(*) from bookmark_store where Member_id = #{id}
+     </select>
+     
+     <select id="getBookmark" resultType="Integer">
+     	select count(*) from bookmark_store 
+     		where member_id = #{memberId} and bookstore_id = #{bookstoreId};
+     </select>
+     
+     <insert id="insert" parameterType="com.checkin.web.entity.MyStore">
+     	insert into bookmark_store(Bookstore_id, Member_id)
+     	values(#{bookstoreId}, #{memberId})
+     </insert>
+     
+     <delete id="delete" parameterType="com.checkin.web.entity.MyStore">
+     	delete from bookmark_store where Member_id = #{memberId} and Bookstore_id = #{bookstoreId} 
+     </delete>
+     
+</mapper>

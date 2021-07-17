@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+    
+<mapper namespace="com.checkin.web.dao.BookStoreDao">
+	
+	<select id="get" resultType="com.checkin.web.entity.BookStore">
+        select * from bookstore where id = #{id}
+     </select>
+      
+     <select id="getCount" resultType="int">
+        select count(id) from bookstore
+     </select>
+     
+     <select id="getList" resultType="com.checkin.web.entity.BookStore">
+        select * from bookstore 
+		   <where>  
+		   		<if test="query != null">Name like '%${query}%'</if>
+		   </where>
+     </select> 
+     <select id="getGu" resultType="com.checkin.web.entity.BookStore">
+        select * from bookstore 
+		   <where>  
+		   		<if test="gu != null">gu_name = #{gu}</if>
+		   </where>
+     </select> 
+        
+     <select id="getNameList" resultType="com.checkin.web.entity.BookStore">
+        select * from bookstore order by name
+     </select>    
+        
+     <insert id="insert" parameterType="com.checkin.web.entity.BookStore">
+     	insert into bookstore(Bg_img, Logo_img, Address, Instagram_url, Member_id,Name,Operating_time, Gu_name, Latitude, Longitude)
+     	values(#{bgImg}, #{logoImg}, #{address}, #{instagramUrl}, #{memberId},#{name},#{operatingTime},#{guName},#{latitude},#{longitude}) 	
+     </insert>
+     
+      <update id="update" parameterType="com.checkin.web.entity.BookStore">
+     	update
+     	<set>     		
+			<if test="bgImg != null"> Bg_img = #{bgImg},</if>
+			<if test="logoImg != null"> Logo_img = #{logoImg},</if>
+			<if test="address != null"> Address = #{address},</if>
+			<if test="Instagram_url != null"> Instagram_url = #{instagramUrl},</if>
+			<if test="memberId != null"> Member_id = #{memberId}</if>
+			<if test="name != null"> Name = #{name}</if>
+			<if test="operatingTime != null"> Operating_time = #{operatingTime}</if>
+			<if test="guName != null"> Gu_name = #{guName}</if>
+			<if test="latitude != null"> Latitude = #{latitude}</if>
+			<if test="longitude != null"> Longitude = #{longitude}</if>
+     	</set>
+     	where id=#{id}
+     </update>
+     
+     <delete id="delete" parameterType="int">
+     	delete from bookstore where id = #{id} 
+     </delete>     
+   
+</mapper>

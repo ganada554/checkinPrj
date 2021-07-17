@@ -1,0 +1,60 @@
+@charset "UTF-8";
+
+.selected{
+	background-color: orange;
+}
+
+.hi-span{
+	display: flex !important; 
+    justify-content: space-between;
+    align-items: center;
+    height:20px;
+}
+
+
+.img{
+	padding:0 !important;
+	margin:0 !important;
+}
+
+
+section>.card>div{
+	margin:0 !important;
+}
+
+.operation{
+	justify-content: space-evenly !important;
+	margin-top: 20px;
+}
+
+.cardSection{
+	padding-top: 0px !important;
+}
+
+input[type="text"]{
+	width: 50%;
+}
+	
+.Btn{
+	justify-content: space-around;
+    width: 100%;
+    display: inline-flex;
+	margin-top:20px;
+}
+
+	.Btn>a{
+		padding: 4px 40px;
+	}
+		
+	.subForm>div{
+		margin-top: 10px;
+	    margin-left: 20%;
+	}
+
+
+
+
+
+
+
+

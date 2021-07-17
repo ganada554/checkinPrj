@@ -1,0 +1,168 @@
+@font-face {
+    font-family: 'TmoneyRoundWindRegular';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_20-07@1.0/TmoneyRoundWindRegular.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
+html {
+    height: 100%;
+    margin: 0px;
+}
+
+body {
+    height: 100%;
+    font-family: 'TmoneyRoundWindRegular';
+}
+
+ul, ol {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+a {
+    cursor: pointer;
+    color: initial;
+    text-decoration: initial;
+}
+
+.d-none {
+    display: none !important;
+}
+
+button {
+    border: 0;
+    outline: 0;
+}
+
+/* -------------------------------------------------------------- */
+
+.flex {
+    display: flex;
+}
+
+.align-center {
+    align-items: center;
+}
+
+.center {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+.font {
+    font-family: 'TmoneyRoundWindRegular';
+}
+
+.text-strong {
+	font-weight: bold;
+	color: rgb(250, 195, 43);
+}
+
+:root {
+    --text-color-basic: #464646 !important;
+    --text-color-light: #E2E2E2 !important;
+    --text-color-strong: #FD9F28 !important;
+    --bg-color-light: #FFFEFD !important;
+    --hover-color-bg: #EFF0F1;
+    --border-color-light: #E4E6E8;
+}
+
+/* -------------------------------------------------------------- */
+
+#main {
+	padding: 70px 0 60px 0;
+}
+
+.search-bookstore {
+	display: flex;
+	align-items: center;
+}
+
+	.search-bookstore input {
+		font-size: 11px;
+		width: 55%;
+		height: 25px;
+		margin-right: 5px;
+		padding-left: 8px;
+	}
+	
+	.search-bookstore>a {
+		display: flex;
+	}
+
+
+	.search-bookstore img {
+		width: 25px;
+		height: 25px;
+	}
+	
+.map-section>div {
+	font-size: 15px;
+	font-weight: bold;
+	margin-top: 20px;
+}
+
+#map {
+	width: 100%;
+	height: 345px;
+	border: 1px solid black;
+	margin-top: 5px;
+	border-radius: 2px;
+}
+
+.nearby-stamp-title {
+	margin: 20px 20px 0 20px;
+	font-weight: bold;
+}
+
+.nearby-stamp {
+	display: flex;
+	flex-direction: row;
+	overflow-x: scroll;
+	flex-wrap: nowrap;
+}
+
+	.nearby-stamp>div:nth-child(1) {
+		font-size: 15px;
+	}
+	
+	.stamptour-info {
+		display: flex;
+		position: relative;
+		justify-content: center;
+		width: 100%;
+		height: 180px;
+		margin-top: 5px;
+		border-radius: 5px;
+	}
+	
+		.stamptour-img {
+			height: 95%;
+			border-radius: 5px;
+			margin: 0 3px;		
+		}
+	
+		.stamptour-content {
+			position: absolute;
+			bottom: 6.5%;
+			color: white;
+			font-size: 11px;
+		}
+		
+.wrap {position: absolute;left: 26px;bottom: 33px;width: 240px;height: 112px;margin-left: -144px;text-align: left;overflow: hidden;font-size: 12px;font-family: 'TmoneyRoundWindRegular';line-height: 1.5;}
+.wrap * {padding: 0;margin: 0;}
+.wrap .info {height: 101px;border-radius: 5px;border-bottom: 2px solid #ccc;border-right: 1px solid #ccc;overflow: hidden;background: #fff;}
+.wrap .info:nth-child(1) {border: 0;box-shadow: 0px 1px 2px #888;}
+.info .title {padding: 5px 0 0 10px;height: 30px;background: #eee;border-bottom: 1px solid #ddd;font-size: 18px;font-weight: bold;}
+.info .close {position: absolute;top: 10px;right: 10px;color: #888;width: 17px;height: 17px;background: url('https://t1.daumcdn.net/localimg/localimages/07/mapapidoc/overlay_close.png');}
+.info .close:hover {cursor: pointer;}
+.info .body {position: relative;overflow: hidden;}
+.info .desc {position: relative;margin: 14px 0 0 67px;height: 75px;}
+.desc .ellipsis {overflow: hidden;text-overflow: ellipsis;white-space: nowrap;}
+.desc .jibun {font-size: 11px;color: #888;margin-top: -2px;}
+.info .img {position: absolute;top: 6px;left: 5px;width: 53px;height: 51px;border: 1px solid #ddd;color: #888;overflow: hidden;}
+.info:after {content: '';position: absolute;margin-left: -12px;left: 50%;bottom: 1px;width: 22px;height: 12px;background: url('https://t1.daumcdn.net/localimg/localimages/07/mapapidoc/vertex_white.png')}
+.info .link {color: #5085BB;font-size: 10px;}

@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.themeleaf.org"
+   xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+   layout:decorator="/inc/layout">
+
+<head>
+   <meta charset="UTF-8">
+   <meta http-equiv="X-UA-Compatible" content="IE=edge">
+   <meta name="viewport"
+      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimun-scale=1.0, user-scalable=no">
+   <link href="/css/admin/review.css" rel="stylesheet">
+   <link href="/css/common.css" rel="stylesheet">
+   <title>리뷰 관리 페이지</title>
+</head>
+
+<body>
+	<main layout:fragment="main">
+		<div class="title">ADMIN</div>
+		<nav class="mini-nav">
+			<a href="/admin/bookstore">서점</a>
+			<a href="/admin/member">회원</a>
+			<a href="/admin/review" class="mini-nav-page">리뷰</a>
+			<a href="/admin/hash/list">해시태그</a>
+		</nav>
+		
+		<section class="gu-container">
+			<h1 class="d-none">지역 선택 폼</h1>
+			<form class="gu-search-form" method="get">
+				<div>
+					<select name="gu" class="gu-list font">
+						<option value="">지역별</option>
+						<option th:each="g:${guList}" th:text="${g.name}" th:selected="(${selectedGu} == ${g.name})"></option>
+					</select>
+					<input class="gu-search-btn font" type="submit" value="검색" />							
+				</div>
+			</form>
+		</section>
+		<section class="review-container">
+			<div th:each="r:${list}" class="review-list">
+				<div>
+		 			<img th:src="${r.imagePath}?:@{/images/location.png}">
+					<div class="review-content">
+						<div>
+			                <span>작성자: </span>
+			                <span class="nickname font" th:text="${r.nickName}">치치</span>											
+						</div>
+						<div>
+							<span>등록일: </span>
+							<span th:text="${#calendars.format(r.regDate,'yyyy.MM.dd')}" class="regdate font">2021.06.13</span>	
+						</div>
+						<div>
+							<span>서점: </span>
+							<span class="bookstore-name" th:text="${r.bookstoreName}">한평책빵</span>						
+						</div>
+						<div>
+							<span>리뷰: </span>
+							<span th:text="${r.content}" class="review-content font">분위기가 넘 좋아요!</span>					
+						</div>
+					</div>				
+				</div>
+				<div class="del-btn">
+					<a onclick="if(!confirm('정말 삭제하시겠습니까?')) return false;" th:href="@{del/{id}(id=${r.id})}" href="del"><img src="/images/trash.png"></a>
+				</div>
+			</div>
+		</section>
+	</main>
+</body>
+
+</html>

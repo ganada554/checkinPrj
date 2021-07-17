@@ -1,0 +1,104 @@
+/*---utils---*/
+.title{
+    text-align: center;
+    margin: 30px 0;
+    font-size: 30px;
+}
+
+.profile-box{
+    border: 1px solid black;
+    padding: 20px;
+    position:relative;
+    border-radius: 30px;
+}
+    .profile-box .modify-btn{
+        top: 15px;
+        right: 15px;
+        position: absolute;
+    }
+    
+    .profile-box .profile-img{
+        width:80px;
+        height:80px;
+        background-color: gray;
+        border-radius:50px;
+    }
+
+    .profile-box .my-info{
+        position: absolute;
+        top: 40px;
+        left: 110px;
+        display: flex;
+        flex-direction: column;
+    }
+        .profile-box .my-info span{
+            padding: 5px;
+        }
+
+
+    .profile-box .my-activity{
+        text-align: center;
+        margin-top: 25px;
+    }
+
+        .profile-box .my-activity span{
+            padding: 0 5px;
+            font-size: 12px;
+        }
+
+
+.dash-board a{
+	display:flex;
+	justify-content: center;
+	margin:15px 0;
+    padding:20px;
+    border: 1px solid black;
+    border-radius: 20px;
+    text-align: center;
+    cursor: pointer;
+    
+    transition: all 0.5s;
+}
+
+.dash-board a:hover{
+	border: 1px solid var(--primary);
+	background-color: #dddddd;
+}
+
+.mypage-menu{
+    display:flex;
+    margin: 30px 0px;
+    position: relative;
+    justify-content: space-around;
+}
+    .mypage-menu .icon-img{
+        width:80px;
+        height:80px;
+    }
+    
+    .mypage-menu  .icon-img:first-child{
+       	background: url("/images/bookmark.png") center no-repeat;
+        background-size: contain;
+    }
+    .mypage-menu  .icon-img:nth-child(2){
+       	background: url("/images/stampmark.png") center no-repeat;
+        background-size: contain;
+    }
+    
+
+    .mypage-menu a span{
+        position:absolute;
+        bottom: -30px;
+        font-size: 13px;
+        text-align:center;
+        width: 80px;
+    }
+    
+.last-board{
+	text-align: center;
+	padding: 30px 0;
+}
+
+.opacity{
+	opacity:0;
+}

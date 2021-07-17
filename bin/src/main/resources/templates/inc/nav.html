@@ -1,0 +1,34 @@
+<html xmlns:th="http://www.themeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="/css/inc/nav.css" rel="stylesheet">
+    <script src="https://use.fontawesome.com/releases/v5.2.0/js/all.js"></script>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <title>nav</title>
+</head>
+
+    <nav class="nav" th:fragment="nav">
+        <a th:href="@{/map}" class="nav-menu">
+            <i class="fas fa-map-marker-alt fa-lg"></i>
+          <span>지도</span>
+        </a>
+        <a th:href="@{/rec/main}" class="nav-menu">
+            <i class="fas fa-book fa-lg"></i>
+            <span class="study-btn">추천</span>
+        </a>
+        <a th:href="@{/index}" class="nav-menu">
+            <i class="fas fa-home fa-lg"></i>
+          <span class="home-btn">홈</span>
+        </a>
+        <a th:href="@{/bookstamp}" class="nav-menu">
+          <i class="fas fa-envelope-squar fa-lg"></i>
+          <span class="message-btn">이벤트</span>
+        </a>
+        <a th:href="@{/review/list}" class="nav-menu">
+            <i class="fas fa-info fa-lg"></i>
+          <span class="mypage-btn">리뷰</span>
+        </a>
+      </nav>
+</html>

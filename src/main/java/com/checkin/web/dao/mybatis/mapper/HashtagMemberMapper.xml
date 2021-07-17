@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+    
+<mapper namespace="com.checkin.web.dao.HashtagMemberDao">
+
+<resultMap type="com.checkin.web.entity.HashtagMember" id="MemberMap">
+    <result column="Hashtag_id" property="hashtagId"/>
+    <result column="Member_id" property="memberId"/>
+</resultMap>
+	
+	<select id="hashCheck" resultType="Integer">
+		select hashtag_id from hashtag_member
+		where hashtag_id = #{hashtagId} and member_id = #{memberId}
+	</select>
+	
+     <select id="getCount" resultType="Integer">
+        select count(hashtag_id) from hashtag_member
+        where member_id = #{memberId}
+     </select>
+     
+     <select id="getList" resultType="Integer">
+        select hashtag_id from hashtag_member where member_id = #{memberId}
+     </select> 
+     
+        
+     <insert id="insert">
+     	insert into hashtag_member(hashtag_id, member_id)
+     	values(#{param1}, #{param2})
+     </insert>
+
+     <delete id="delete" parameterType="Integer">
+     	delete from hashtag_member
+     	where hashtag_id = #{param1} and member_id = #{param2}
+     </delete>
+     
+     <select id="mylovehashtag" resultType="Map">
+			select h.name name, count(h.id) count from hashtag_bookstore hb inner join bookstore b
+			on hb.bookstore_id = b.id
+			join hashtag h on hb.hashtag_id = h.id
+			join bookmark_store bm on b.id = bm.bookstore_id
+			where bm.member_id= #{memberId}
+			group by h.name
+			order by count(h.id) desc
+     </select>
+</mapper>

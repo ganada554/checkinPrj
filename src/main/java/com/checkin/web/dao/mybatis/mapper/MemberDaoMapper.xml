@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+    
+<mapper namespace="com.checkin.web.dao.MemberDao">
+
+<resultMap type="com.checkin.web.entity.Member" id="MemberMap">
+    <result column="Profile_img" property="profileImg"/>
+    <result column="Position_id" property="positionId"/>
+    <result column="reg_date" property="regDate"/>
+</resultMap>
+	
+	<select id="loginCheck" resultType="String">
+		select nickname from member
+		where email = #{email} and password = #{password}
+	</select>
+	
+	<select id="nickTrue" resultType="String">
+		select nickname from member
+		where nickname = #{nickname}
+	</select>
+	
+	<select id="emailValid" resultType="String">
+		select email from member
+		where email = #{email}
+	</select>
+	
+	<select id="getByEmail" resultMap="MemberMap">
+        select * from member where email = #{email}
+     </select>
+	
+	<select id="get" resultMap="MemberMap">
+        select * from member where id = #{id}
+     </select>
+      
+     <select id="getCount" resultType="int">
+        select count(id) from member
+      	   <where>
+	          <if test="query != null">nickname like '%${query}%'</if>
+	          <if test="positionId != null">and  position_id = #{positionId}</if>
+    		</where>
+     </select>
+     
+     <select id="getList" resultMap="MemberMap">
+        select * from member
+		   <where>  
+	          <if test="query != null">nickname like '%${query}%'</if>
+	          <if test="positionId != null">and  position_id = #{positionId}</if>
+		   </where>
+     </select> 
+        
+     <insert id="insert" parameterType="com.checkin.web.entity.Member">
+     	insert into member(nickname, password, email,<if test="profileImg != null"> profile_img,</if> position_id)
+     	values(#{nickname}, #{password}, #{email}, <if test="profileImg != null">#{profileImg},</if>'3')
+     </insert>
+     
+     <update id="update" parameterType="com.checkin.web.entity.Member">
+     	update member
+     	<set>
+			<if test="nickname != null"> nickname = #{nickname},</if>
+			<if test="password != null"> password = #{password},</if>
+			<if test="email != null"> email = #{email},</if>
+			<if test="profileImg != null"> profile_img = #{profileImg},</if>
+			<if test="positionId != null"> position_id = #{positionId}</if>
+     	</set>
+     	where id=#{id}
+     </update>
+     
+     <delete id="delete" parameterType="int">
+     	delete from member where id = #{id} 
+     </delete>
+</mapper>

@@ -11,7 +11,7 @@ window.addEventListener("load", function() {
 	// *------ 지도에 서점 나타내기 ------*
 	// 1. 서점 정보 얻어내기		
 	function getBookstores() {
-		const response = fetch("http://localhost:8080/api/bookstore/list");
+		const response = fetch("/api/bookstore/list");
 		return response
 		.then(res => 
 			res.json())
@@ -113,9 +113,6 @@ window.addEventListener("load", function() {
     let input = document.querySelectorAll("input[type=hidden]")
 	let latitude = input[0].value
 	let longitude = input[1].value
-
-	console.log(latitude, longitude);
-
 
 
 	if (navigator.geolocation) {

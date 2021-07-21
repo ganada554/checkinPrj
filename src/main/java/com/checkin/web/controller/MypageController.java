@@ -118,7 +118,7 @@ public class MypageController {
 		session.invalidate();
 		
 		
-		return "redirect:/index";
+		return "redirect:/";
 	}
 	
 }

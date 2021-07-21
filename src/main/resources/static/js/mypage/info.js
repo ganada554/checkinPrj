@@ -112,7 +112,7 @@ window.addEventListener("load", function() {
 			}
 			
 			let nickValue = nick.value;
-			let url = 'http://localhost:8080/api/member/'+nickValue;
+			let url = '/api/member/'+nickValue;
 			console.log(`input: ${nickValue}, url: ${url}`)
 			fetch(url)
 	        .then(response=>{

@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.themeleaf.org"
 	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
-	layout:decorator="/inc/layout">
+	layout:decorator="inc/layout">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -40,7 +40,7 @@
         </section>
 	 	   	 <div class="last-board">
 	       	   	<a class="btn">관리자 이메일</a>
-	           	<a th:href="@{/logout}" class="btn">로그아웃</a>
+	           	<a th:href="@{/logout}" class="btn logout">로그아웃</a>
            	</div>
     </main>
 </body>

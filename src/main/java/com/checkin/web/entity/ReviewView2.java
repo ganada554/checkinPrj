@@ -53,7 +53,7 @@ public class ReviewView2 {
 		if(img == null)
 			return null;
 		
-		return "/upload/review/" + img;
+		return "/images/review/" + img;
 	}
 
 	public Date getRegDate() {

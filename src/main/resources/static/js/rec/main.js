@@ -22,7 +22,7 @@ window.addEventListener("load", function() {
 		//쿼리문을 받는 거면 url를 굳이 fetch에 넣는 URL을 RestAPI로 하면 안된다. 
 		//recommends?f=&q=
 		//#은 인코딩 안해주면 안된다.. 
-		let url = `http://localhost:8080/api/recommend/list/?f=${f}&q=` + encodeURIComponent(q);
+		let url = `/api/recommend/list/?f=${f}&q=` + encodeURIComponent(q);
 
 		function showResult() {
 			const response = fetch(url);

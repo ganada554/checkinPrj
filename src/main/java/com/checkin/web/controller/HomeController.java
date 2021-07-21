@@ -32,7 +32,7 @@ public class HomeController {
 		this.reviewService = reviewService;
 	}
 	
-	@RequestMapping("/index")
+	@RequestMapping("/")
 	public String index(Model model) {
 		// 이 서점은 어떠세요?
 		Integer[] bookStoreArray = service.getBookstoreIdArray();

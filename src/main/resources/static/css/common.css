@@ -22,8 +22,8 @@ input{
 }
 	
 :root {
-    --primary: rgb(115, 168, 174);
-    --secondary: #0d7785;
+    --primary: #bdae9d;
+    --secondary: #a3907a;
     --danger: #fb0603;
     --gray: #f8f9fa;
   }

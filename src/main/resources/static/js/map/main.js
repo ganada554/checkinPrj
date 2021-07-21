@@ -11,7 +11,7 @@ window.addEventListener("load", function() {
 	// *------ 지도에 서점 나타내기 ------*
 	// 1. 서점 정보 얻어내기		
 	function getBookstores() {
-		const response = fetch("http://localhost:8080/api/bookstore/list");
+		const response = fetch("/api/bookstore/list");
 		return response
 		.then(res => 
 			res.json())
@@ -172,7 +172,7 @@ window.addEventListener("load", function() {
 	let moveMapBtn = document.querySelector(".moveToBookstore");
 	moveMapBtn.onclick = function(e) {
 		let bookstoreName = document.querySelector("input[name=b]").value;
-		let url = "http://localhost:8080/api/bookstore/search/" + bookstoreName; 
+		let url = "/api/bookstore/search/" + bookstoreName; 
 		
 		function getBookstore() {
 			const response = fetch(url);

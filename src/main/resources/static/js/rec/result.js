@@ -16,7 +16,7 @@ window.addEventListener("load", function() {
 		console.log(q)
 		console.log(f)
 
-		let url = 'http://localhost:8080/api/rec/result/' + f + "/" + encodeURIComponent(q);
+		let url = 'api/rec/result/' + f + "/" + encodeURIComponent(q);
 
 		console.log(url)
 		

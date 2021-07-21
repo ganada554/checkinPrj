@@ -41,7 +41,7 @@ public class LoginController {
 		member = service.getByEmail(member.getEmail());
 		session.setAttribute("member", member);
 		
-		return "redirect:/index";
+		return "redirect:/";
 	}
 	
 	
@@ -87,7 +87,7 @@ public class LoginController {
 		session.invalidate();
 		System.out.println(session);
 		
-		return "redirect:/index";
+		return "redirect:/";
 	}
 	
 

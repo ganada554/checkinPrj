@@ -56,20 +56,6 @@ button {
     font-family: 'TmoneyRoundWindRegular';
 }
 
-.text-strong {
-	font-weight: bold;
-	color: rgb(250, 195, 43);
-}
-
-:root {
-    --text-color-basic: #464646 !important;
-    --text-color-light: #E2E2E2 !important;
-    --text-color-strong: #FD9F28 !important;
-    --bg-color-light: #FFFEFD !important;
-    --hover-color-bg: #EFF0F1;
-    --border-color-light: #E4E6E8;
-}
-
 /* -------------------------------------------------------------- */
 
 #main {
@@ -85,7 +71,7 @@ button {
 .gu-list {
 	height: 30px;
 	font-size: 13px;
-	padding-left: 10px;
+	padding-left: 5px;
 }
 
 	.gu-list>option {
@@ -95,6 +81,8 @@ button {
 .gu-search-btn {
 	height: 30px;
 	font-size: 13px;
+	background-color: var(--primary);
+	color: white;
 }
 
 .reg-btn {
@@ -106,7 +94,7 @@ button {
 	padding: 7px 0;
 	text-align: center;
 	border-radius: 3px;
-	background-color: rgb(224, 223, 223);
+	background-color: var(--primary); 
 }
 
 .review-container {
@@ -138,7 +126,7 @@ button {
         }
 
         .nickname {
-        	font-size: 18px;
+        	font-size: 16px;
             margin-left: 10px;
             line-height: 35px;
         }
@@ -167,20 +155,21 @@ button {
 		border-radius: 3px;
 	}
 	
-	.review-img>div {
+	.review-img>form {
 		display: flex;
 		position: absolute;
+		align-items: center;
 		left: 7px;
 		bottom: 0px;
 		background-color: rgb(245, 245, 245);
 		margin: 5px 0 6px 0;
-		padding: 5px;
+		padding: 4px 6px;
 		border-radius: 5px;
 	} 
 		
 		.like {
-			width: 15px;
-			height: 15px;
+			width: 20px;
+			height: 20px;
 			margin: 0 6px 0 3px;
 		}
 	

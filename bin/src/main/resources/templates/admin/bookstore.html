@@ -1,53 +1,94 @@
-<html lang="en">
+<!DOCTYPE html>
+<html xmlns:th="http://www.themeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+   layout:decorator="inc/layout">
 
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimun-scale=1.0, user-scalable=no">
-    <link href="/css/admin/bookstore.css" rel="stylesheet">
-    <link href="/css/common.css" rel="stylesheet">
-    <title>서점 관리 페이지</title>
+   <meta charset="UTF-8">
+   <meta http-equiv="X-UA-Compatible" content="IE=edge">
+   <meta name="viewport"
+      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimun-scale=1.0, user-scalable=no">
+   <link href="/css/admin/bookstore.css" rel="stylesheet">
+   <link href="/css/common.css" rel="stylesheet">
+   <script src="/js/admin/bookstore.js"></script>
+   <title>서점 관리 페이지</title>
 </head>
 
 <body>
-    <main>
-        <div class="title">ADMIN</div>
-        <nav class="mini-nav">
-            <a href=""  class="mini-nav-page">서점</a>
-            <a href="">회원</a>
-            <a href="">스탬프 투어</a>
-            <a href="">후기</a>
-            <a href="">해시태그</a>
-        </nav>
+   <main layout:fragment="main">
+      <div class="title">ADMIN</div>
+      <nav class="mini-nav">
+         <a href="" class="mini-nav-page">서점</a>
+         <a href="/admin/member">회원</a>
+		 <a href="/admin/review">리뷰</a>
+		 <a href="/admin/hash/list">해시태그</a>
+      </nav>
 
-        
-        <section>
+
+      <section>
+       
+         <form>
             <div class="operation">
-                <!--select와 검색 중 하나만 하기 추천
+               <!--select와 검색 중 하나만 하기 추천
                     둘 다 구현은 너무 번거로움-->
-                <select>
-                    <option>옵션</option>
-                </select>
+               <select name="gu">
+                  <option value="">전체</option>
+                  <option th:each="gu : ${gu}" th:text="${gu.name}">옵션</option>
+               </select>
 
-                <input type="text" name="" value="">
-                <a href="" class="btn">검색</a>
+               <input type="text" name="query">
+               <input type="submit" class="btn" value="검색">
             </div>
+         </form>
+         <form method="post">
+            <div class="card bookstore-info" th:each=" b : ${bookstore}">
+               	<div class="bookstore-info">
+              	 	<div class="bookstore-name">
+						<img class="logo-img" th:src="${b.logoImg}?:@{/images/books.png}">
+						<div th:text="${b.name}"></div>
+		    		</div>
+		    		<div class="info">
+		    			<div>
+							<img src="/images/home.png">
+			    			<div class="address truncate" th:text="${b.address}"></div>	    			
+		    			</div>
+		    			<div>
+							<img src="/images/clock.png">
+		    				<div class="time" th:text="${b.operatingTime}"></div>
+		    			</div>
+				    	<div>
+							<img src="/images/person.jpg">
+                 			<div>서점지기: <span th:text="${nameNotNumber.get(b.id)}?:'공석'"></span></div>
+		    			</div>
+		    		</div>
+               </div>
+               <div class="popup d-none">
+                  <div>
+                     <div th:each="m : ${member}" class="card">
+                        <img th:src="${m.profileImg}?:@{/images/profile.png}" class="card-img">
+                        <div class="hi-span">
+                           <div th:text="${m.nickname}" class="hi-span-nick">닉네임</div>
+                           <div th:text="${m.email}">email</div>
+                           <div th:text="'가입: '+${#calendars.format(m.regDate, 'yy-MM-dd')}">가입일</div>
+                        </div>
+                        <div class="btn-list">
+                           <input type="button" th:href="@{admin/bookstore/update}" class="btn assign-btn" value="임명">
+                           <input type="hidden" name="memberId" th:value="${m.id}">
+                           <input type="hidden" name="bookstoreId" th:value="${b.id}">
+                        </div>
+                     </div>
+                     <img src="/images/cancel.png" class="close">
+                  </div>
+               </div>
 
-            <div class="card">
-                <div class="card-img"></div>
-                <div class="hi-span">
-                    <span>서점 이름</span>
-                    <span>서점 위치</span>
-                    <span>서점 오픈시간</span>
-                </div>
-                <div class="btn-list">
-                    <a href="" class="btn">서점지기 임명</a>
-                    <a href="" class="btn">편집</a>
-                </div>
+               <div class="btn-list">
+                  <input type="button" class="btn popup-btn" value="서점지기 임명">
+                  <a th:href="@{/bookstore/detail/{id}(id=${b.id})}" class="btn">편집</a>
+               </div>
+
             </div>
-            </div>
-        </section>
-    </main>
+         </form>
+      </section>
+   </main>
 </body>
 
 </html>

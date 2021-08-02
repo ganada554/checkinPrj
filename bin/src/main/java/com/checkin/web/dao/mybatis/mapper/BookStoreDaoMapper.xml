@@ -6,49 +6,105 @@
 
     
 <mapper namespace="com.checkin.web.dao.BookStoreDao">
+
+	<resultMap type="com.checkin.web.entity.BookStore" id="bookstoreMap">
+        <result column="bg_img" property="bgImg"/>
+        <result column="logo_img" property="logoImg"/>
+        <result column="instagram_url" property="instagramUrl"/>
+        <result column="member_id" property="memberId"/>
+        <result column="operating_time" property="operatingTime"/>
+        <result column="gu_name" property="guName"/>
+	</resultMap>
 	
-	<select id="get" resultType="com.checkin.web.entity.BookStore">
+	<resultMap type="com.checkin.web.entity.BookStoreView" id="bookstoreViewMap">
+        <result column="bg_img" property="bgImg"/>
+        <result column="logo_img" property="logoImg"/>
+        <result column="instagram_url" property="instagramUrl"/>
+        <result column="member_id" property="memberId"/>
+        <result column="operating_time" property="operatingTime"/>
+        <result column="gu_name" property="guName"/>
+        <result column="hashtag_id" property="hashtagId"/>
+        <result column="hashtag_name" property="hashtagName"/>        
+	</resultMap>
+	
+	<select id="getBookstoreIdArray" resultType="Integer">
+		select id from bookstore;
+	</select>
+	
+	<select id="get" resultMap="bookstoreMap">
         select * from bookstore where id = #{id}
      </select>
+     
+     <select id="getView" resultMap="bookstoreViewMap">
+        select * from bookstore_view where id = #{id}
+     </select>
+     
+      <select id="getBookstoreByQuery" resultMap="bookstoreViewMap">
+        select * from bookstore_view 
+        <where>
+	        <if test="query != null">Name like '%${query}%'</if>
+        </where>
+     </select>
+     
+     
+     <select id="getBookstore" resultMap="bookstoreMap">
+        select * from bookstore 
+		   <where>  
+		   		<if test="query != null">name = #{query}</if>		   		
+		   </where>
+     </select> 
       
      <select id="getCount" resultType="int">
         select count(id) from bookstore
      </select>
      
-     <select id="getList" resultType="com.checkin.web.entity.BookStore">
+     <select id="getList" resultMap="bookstoreMap">
         select * from bookstore 
 		   <where>  
 		   		<if test="query != null">Name like '%${query}%'</if>
+		   		<if test="gu != null">and gu_name = #{gu}</if>
 		   </where>
-     </select> 
-     <select id="getGu" resultType="com.checkin.web.entity.BookStore">
+     </select>
+     
+     <select id="getGu" resultMap="bookstoreMap">
         select * from bookstore 
 		   <where>  
 		   		<if test="gu != null">gu_name = #{gu}</if>
 		   </where>
      </select> 
         
-     <select id="getNameList" resultType="com.checkin.web.entity.BookStore">
+     <select id="getNameList" resultMap="bookstoreMap">
         select * from bookstore order by name
-     </select>    
+     </select>
         
-     <insert id="insert" parameterType="com.checkin.web.entity.BookStore">
-     	insert into bookstore(Bg_img, Logo_img, Address, Instagram_url, Member_id,Name,Operating_time, Gu_name, Latitude, Longitude)
-     	values(#{bgImg}, #{logoImg}, #{address}, #{instagramUrl}, #{memberId},#{name},#{operatingTime},#{guName},#{latitude},#{longitude}) 	
+     <insert id="insert" useGeneratedKeys="true" keyProperty="id" parameterType="com.checkin.web.entity.BookStore">
+     	insert into bookstore(
+	     	<if test="bgImg != null">Bg_img,</if>
+	     	 <if test="logoImg != null">Logo_img,</if> 
+	     	 Address, Instagram_url, Name,Operating_time, Gu_name)
+     	values(
+	     	<if test="bgImg != null">#{bgImg}, </if>
+	     	<if test="logoImg != null">#{logoImg},</if>
+	     	#{address}, #{instagramUrl}, #{name},#{operatingTime},#{guName}) 	
+	</insert>
+	
+	<insert id="inserthash" parameterType="com.checkin.web.entity.HashtagBookstore">
+		insert into hashtag_bookstore(bookstore_id, hashtag_id) 
+		values(#{bookstoreId}, #{hashtagId});
      </insert>
      
       <update id="update" parameterType="com.checkin.web.entity.BookStore">
-     	update
+     	update bookstore
      	<set>     		
 			<if test="bgImg != null"> Bg_img = #{bgImg},</if>
 			<if test="logoImg != null"> Logo_img = #{logoImg},</if>
 			<if test="address != null"> Address = #{address},</if>
-			<if test="Instagram_url != null"> Instagram_url = #{instagramUrl},</if>
-			<if test="memberId != null"> Member_id = #{memberId}</if>
-			<if test="name != null"> Name = #{name}</if>
-			<if test="operatingTime != null"> Operating_time = #{operatingTime}</if>
-			<if test="guName != null"> Gu_name = #{guName}</if>
-			<if test="latitude != null"> Latitude = #{latitude}</if>
+			<if test="instagramUrl != null"> Instagram_url = #{instagramUrl},</if>
+			<if test="memberId != null"> Member_id = #{memberId},</if>
+			<if test="name != null"> Name = #{name},</if>
+			<if test="operatingTime != null"> Operating_time = #{operatingTime},</if>
+			<if test="guName != null"> Gu_name = #{guName},</if>
+			<if test="latitude != null"> Latitude = #{latitude},</if>
 			<if test="longitude != null"> Longitude = #{longitude}</if>
      	</set>
      	where id=#{id}

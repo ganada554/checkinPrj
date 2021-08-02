@@ -99,3 +99,13 @@
     justify-content: space-between;
     margin-top: 20px;
 }
+
+	.btn-list>.btn {
+	    font-family: 'TmoneyRoundWindRegular';
+		font-size: 15px;
+	}
+	
+	.btn-list>.btn:nth-child(1) {
+		display: flex;
+    	align-items: center;
+	}

@@ -6,13 +6,42 @@
 
     
 <mapper namespace="com.checkin.web.dao.HashtagBookstoreDao">
-<resultMap type="com.checkin.web.entity.BookStore" id="getList">
-        <result column="Bg_img" property="bgImg"/>
-</resultMap>
+<resultMap type="com.checkin.web.entity.BookStore" id="bookstoreMap">
+        <result column="bg_img" property="bgImg"/>
+        <result column="logo_img" property="logoImg"/>
+        <result column="instagram_url" property="instagramUrl"/>
+        <result column="member_id" property="memberId"/>
+        <result column="operating_time" property="operatingTime"/>
+        <result column="gu_name" property="guName"/>
+	</resultMap>
+	
+	<resultMap type="com.checkin.web.entity.BookStoreView" id="bookstoreViewMap">
+        <result column="bg_img" property="bgImg"/>
+        <result column="logo_img" property="logoImg"/>
+        <result column="instagram_url" property="instagramUrl"/>
+        <result column="member_id" property="memberId"/>
+        <result column="operating_time" property="operatingTime"/>
+        <result column="gu_name" property="guName"/>
+        <result column="hashtag_id" property="hashtagId"/>
+        <result column="hashtag_name" property="hashtagName"/>        
+	</resultMap>
+	
 	<!-- 서점 정보를 불러오는거니까 resultType은 BookStore!!! -->
-	<select id="getList" resultType="com.checkin.web.entity.BookStore">
+	<select id="getList" resultMap="bookstoreMap">
 		select b1.*
 		from bookstore b1
+		join hashtag_bookstore b2 on b1.id = b2.Bookstore_id
+		join hashtag h on h.Id = b2.Hashtag_id
+		<where>
+			<if test="query != null">h.Name = #{query};</if>
+		</where>
+		<!-- view를 생성?, 중복제거 -->
+	</select>
+	
+	
+	<select id="getListByView" resultMap="bookstoreViewMap">
+		select b1.*
+		from bookstore_view b1
 		join hashtag_bookstore b2 on b1.id = b2.Bookstore_id
 		join hashtag h on h.Id = b2.Hashtag_id
 		<where>
@@ -26,11 +55,8 @@
      	values(#{hashtagId}, #{bookstoreId})
     </insert>
     
-    <delete id="delete" parameterType="int">
-    	delete from hashtag_bookstore 
-    	<where>
-    		Hashtag_id = #{hashtagId} and Bookstore_id = #{bookstoreId};
-    	</where>
+    <delete id="delete" parameterType="Integer">
+    	delete from hashtag_bookstore where Bookstore_id = #{bookstoreId} 
     </delete>	
 
 </mapper>

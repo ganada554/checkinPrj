@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.themeleaf.org"
 	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
-	layout:decorator="/inc/layout">
+	layout:decorator="inc/layout">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -23,23 +23,24 @@
 	            </div>
 	
 	            <div class="my-activity">
-	                <span th:text="'스탬프 '+${stampCount}">스탬프 3</span>
-	                <span th:text="'자주 가는 서점 '+${bookCount}">자주 가는 서점 2</span>
+
 	            </div>
         </section>
 
         <section>
+        		<div class="create-btn">
+                	<a th:href="@{/admin/bookstore/insert}">서점 생성하기 ➤</a>
+                </div>
                 <div class="dash-board">
-                   <a href="">서점 관리</a>
-                   <a href="" th:href="@{/admin/member}">멤버 관리</a>
-                   <a href="">스탬프 관리</a>
-                   <a href="">후기 관리</a>
-                   <a href="">해시태그 관리</a>
+                   <a href="/admin/bookstore">서점 관리</a>
+                   <a href="/admin/member">멤버 관리</a>
+                   <a href="/admin/review">리뷰 관리</a>
+                   <a href="/admin/hash/list">해시태그 관리</a>
                 </div>
         </section>
 	 	   	 <div class="last-board">
 	       	   	<a class="btn">관리자 이메일</a>
-	           	<a th:href="@{/logout}" class="btn">로그아웃</a>
+	           	<a th:href="@{/logout}" class="btn logout">로그아웃</a>
            	</div>
     </main>
 </body>

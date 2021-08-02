@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.themeleaf.org"
 	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
-	layout:decorator="/inc/layout">
+	layout:decorator="inc/layout">
 
 <head>
 	<meta charset="UTF-8">
@@ -10,6 +10,7 @@
 	<title>책크인</title>
 	<link href="/css/common.css" type="text/css" rel="stylesheet">
 	<link href="/css/review/list.css" type="text/css" rel="stylesheet">
+	<script src="/js/review/list.js"></script>
 </head>
 <body>
 	<main id="main" layout:fragment="main">
@@ -42,10 +43,11 @@
 						<div class="review-img">
  	 						<img th:src="${r.imagePath}?:@{/images/location.png}">
   							<!-- <img th:src="${m.profileImg}?:@{/images/profile.png}"> --> 							
- 							<div>
-								<img src="/images/like.png" class="like"></img>
+ 							<form id="like-form">
+ 								<input type="hidden" name="reviewId" th:value="${r.id}">
+								<img th:classappend="${map.get(r.id)}?'likeAdded':''" th:src="${map.get(r.id)}?'/images/thumb-up.png':'/images/like.png'" class="like"></img>
 								<span class="bookstore-name" th:text="${r.bookstoreName}">한평책빵</span>						
-							</div>
+							</form>
 						</div>					
 					</div>
 				</div>
@@ -61,7 +63,7 @@
 						</div>
 					</div>
 					<div>
-						<textarea th:text="${r.content}" class="review-content font">분위기가 넘 좋아요!</textarea>					
+						<div th:text="${r.content}" class="review-content font">분위기가 넘 좋아요!</div>					
 					</div>
 				</div>
 			</div>

@@ -21,15 +21,18 @@
         select count(*) from bookmark_store where Member_id = #{id}
      </select>
      
-        
+     <select id="getBookmark" resultType="Integer">
+     	select count(*) from bookmark_store 
+     		where member_id = #{memberId} and bookstore_id = #{bookstoreId};
+     </select>
+     
      <insert id="insert" parameterType="com.checkin.web.entity.MyStore">
      	insert into bookmark_store(Bookstore_id, Member_id)
      	values(#{bookstoreId}, #{memberId})
      </insert>
      
-     
-     <delete id="delete" parameterType="Integer">
-     	delete from bookmark_store where Bookstore_id = #{id} 
+     <delete id="delete" parameterType="com.checkin.web.entity.MyStore">
+     	delete from bookmark_store where Member_id = #{memberId} and Bookstore_id = #{bookstoreId} 
      </delete>
      
 </mapper>

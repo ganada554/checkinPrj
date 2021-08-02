@@ -8,10 +8,10 @@
     <header th:fragment="header">
         <section class="header">
             <div class="logo">
-                <a href="/index.html" th:href="@{/index}">책크인</a>
+                <a href="/index.html" th:href="@{/}">책크인</a>
             </div>
                  <a href="mypage/index.html" th:href="@{/mypage}"> 
-			<img th:src="${session.member==null} ? @{/images/profile.png} : ${session.member.profileImg}" class="profile-img" />
+			<img th:src="${session.member==null} ? @{/images/profile.png} : (${session.member.profileImg}?:@{/images/profile.png})" class="profile-img" />
                  </a>
         </section>
     </header>

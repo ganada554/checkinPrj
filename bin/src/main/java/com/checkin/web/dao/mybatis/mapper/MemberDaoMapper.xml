@@ -18,6 +18,16 @@
 		where email = #{email} and password = #{password}
 	</select>
 	
+	<select id="nickTrue" resultType="String">
+		select nickname from member
+		where nickname = #{nickname}
+	</select>
+	
+	<select id="emailValid" resultType="String">
+		select email from member
+		where email = #{email}
+	</select>
+	
 	<select id="getByEmail" resultMap="MemberMap">
         select * from member where email = #{email}
      </select>
@@ -43,8 +53,8 @@
      </select> 
         
      <insert id="insert" parameterType="com.checkin.web.entity.Member">
-     	insert into member(nickname, password, email, position_id)
-     	values(#{nickname}, #{password}, #{email}, '3')
+     	insert into member(nickname, password, email,<if test="profileImg != null"> profile_img,</if> position_id)
+     	values(#{nickname}, #{password}, #{email}, <if test="profileImg != null">#{profileImg},</if>'3')
      </insert>
      
      <update id="update" parameterType="com.checkin.web.entity.Member">

@@ -4,6 +4,9 @@ section{
 select{
     border-radius: 10px;
 }
+input {
+	font-family: 'TmoneyRoundWindRegular';
+}
 
 /*--mini nav--*/
 .mini-nav{
@@ -61,6 +64,7 @@ input[type="text"]{
     .card .hi-span{
         display: inline-block;
         margin: 10px 10px;
+        font-size: 13px;
     }
 
     .card .btn-list{

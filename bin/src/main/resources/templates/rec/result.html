@@ -1,40 +1,49 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org"
  xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
- layout:decorator="/inc/layout">
+ layout:decorator="inc/layout">
 <head>
 <meta charset="UTF-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<link href="/css/rec/result.css" rel="stylesheet">
 <link href="/css/common.css" rel="stylesheet">
+<link href="/css/rec/result.css" rel="stylesheet">
+<script type="text/javascript" src="/js/rec/result.js"></script>
  
 <title>추천탭 검색 결과 페이지</title>
 </head>
 
 
 <main layout:fragment="main">
-
+<div class="title"></div>
     <section id="search">
-        <input type="text" value="">
-        <input type="submit" value="검색">
-    </section>
-    
-    <section th:if="${#lists.isEmpty(list)}">
-    	<span><img src="/images/ndg.gif" style="width:290px">존재하지 않는 서점입니다</span>
-    </section>
-    
-    <section th:if="${not #lists.isEmpty(list)}" id="bookstore" th:each="b:${list}">
-        <div>
-            <div>
-                <img src="/images/bs.jpg">
-            </div>
-            <div class="bsInfo">
-                <span th:text="${b.name}">  책방이름</span>
-                <span>  #해시태그</span>
-                <span th:text="${b.address}">  서울시 마포구 ㅇㅇ동 ㅇㅇ번지</span>
-            </div>
-        </div>
-    </section>
+		<select name="f">
+			<option value="1">일반 검색</option>
+			<option value="2">해시태그</option>
+		</select> 
+		<input type="text" name="q"> 
+		<a class="btn subBtn" >검색</a> 
+		<select name="h">
+			<option selected value="0">해시태그 목록</option>
+			<option  th:each="h:${hlist}" th:value="${h.id}" value="1" th:text="${h.name}">일반 검색</option>
+		</select>
+	</section>
+	
+	 <!--<section th:if="${#lists.isEmpty(list)}">
+		<span><img src="/images/ndg.gif" style="width:290px">존재하지 않는 서점입니다</span>
+	 </section>-->
+	 <!--th:if="${not #lists.isEmpty(list)}"-->
+	<!--`<section id="bookstore" th:each="b:${store}">
+					        <div>
+					            <div>
+					                <img src="/images/bs.jpg">
+					            </div>
+					            <div class="bsInfo">
+					                <span th:text="${b.name}">store[i].name</span>
+					                <span>  #해시태그</span>
+					                <span th:text="${b.address}">store[i].address</span>
+					            </div>
+					        </div>
+					    </section>`-->
 </main>
 </html>

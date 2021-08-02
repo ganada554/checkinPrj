@@ -60,8 +60,7 @@ window.addEventListener("load", function() {
         console.log(hselected.nextElementSibling);	
         	
         // selected된 input의 name값 지정	
-		hselected.nextElementSibling.setAttribute('name', "hashtag");
-		
+		hselected.nextElementSibling.setAttribute('name', "hashtag");		
 	}
     
 	rating.onclick = function(e) {

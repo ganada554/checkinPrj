@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.themeleaf.org"
 	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
-	layout:decorator="/inc/layout"> 
+	layout:decorator="inc/layout"> 
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -24,7 +24,7 @@
      		   <div class="error-message animation d-none">부적합한 항목이 있습니다</div>
                 <div class="nick-align">
                 	<label>NICKNAME</label>
-             	  	<input type="button" class="btn nick-type" value="중복 체크">
+             	  	<input type="button" class="btn nick-type font" value="중복 체크">
            		</div>
            		<span class="height">
 					<input type="text" class="input" name="nickname" th:value="${member.nickname}">
@@ -38,18 +38,19 @@
 				</span>
                 
                 
-				<div class="pwd-align">
+				<div class="pwd-align" th:if="${member.password} != 'kakao'">
                 	<label>PASSWORD</label>
              	  	<img src="/images/eye.png" class="pwd-type"></img>
            	   </div>
-           	   <span class="height">
+           	   <span class="height" th:if="${member.password} != 'kakao'">
 					<input type="password" class="input" name="password" th:value="${member.password}">
 					<span class="d-none error-message">4 글자 이상, 20 글자 미만으로 입력하세요</span>
 				</span>
 				
 			
            		 <div class="btn-list">
-	                <a th:href="@{/bye(id=${member.id})}" class="btn">탈퇴</a>
+	                <a th:href="@{/bye(id=${member.id})}" class="btn"  onclick="if(!confirm('정말 탈퇴하시겠습니까?')) return false;" >탈퇴</a>
+	                <input type="hidden" name="id" th:value=${member.id}>
 	                <input type="submit" class="btn" value="수정">
                 </div>
 	        </section>

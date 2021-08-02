@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+    
+<mapper namespace="com.checkin.web.dao.ReviewLikeDao">
+
+	<resultMap type="com.checkin.web.entity.ReviewLike" id="reviewLikeMap">
+        <result column="member_id" property="memberId"/>
+	</resultMap>
+	
+	<select id="getLike" resultType="Integer">
+     	select count(*) from review_like
+     		where Member_id = #{memberId} and Review_id = #{reviewId};
+    </select>
+    
+    <select id="getMemberLike" resultType="int">
+    	select id from 
+    	myreview_view left join review_like
+		on myreview_view.id = review_like.review_id
+		where review_like.member_id = #{memberId}; 
+    </select>
+
+	<insert id="insert" parameterType="com.checkin.web.entity.ReviewLike">
+     	insert into review_like(Member_id, Review_id)
+     	values(#{memberId}, #{reviewId})
+     </insert>
+     
+     <delete id="delete" parameterType="com.checkin.web.entity.ReviewLike">
+     	delete from review_like 
+     		where Review_id = #{reviewId} 
+     		and	Member_id = #{memberId}
+     </delete>
+
+</mapper>

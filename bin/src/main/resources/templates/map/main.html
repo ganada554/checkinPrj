@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.themeleaf.org"
 	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
-	layout:decorator="/inc/layout">
+	layout:decorator="inc/layout">
 
 <head>
 	<meta charset="UTF-8">
@@ -16,23 +16,25 @@
 <body>
 	<main id="main" layout:fragment="main">
 		<section class="search-section">
-			<form method="get">
+			<form id="form-content" method="get">
 				<div class="search-bookstore">
-					<input class="font" type="text" placeholder="가고 싶은 서점을 검색하세요">
-					<a href=""><img src="/images/search.png"></a>
+					<input name="b" class="font" type="text" placeholder="가고 싶은 서점을 검색하세요">
+					<img class="moveToBookstore" src="/images/search.png">
 				</div>			
 			</form>
 		</section>
 		<section class="map-section">
 			<div>내 주변 독립서점</div>
 			<div id="map">
-			</div>
+			</div>			
 		</section>
+		<div class="nearby-stamp-title">즐거운 스탬프 투어</div>
 		<section class="nearby-stamp">
-			<div>내 주변 스탬프 투어</div>
-			<div class="stamptour-info">
-				<a href=""><img class="stamptour-img" src="/images/bookstampImg1.jpg"></a>
-				<div class="stamptour-content">도장 찍는 재미! <br/> 강남구 독립서점으로 스탬프 투어를 떠나보세요</div>
+			<div th:each="gu:${gu}" class="stamptour-info">
+				<a th:href="@{/bookstamp/detail(id=${gu.id})}">
+					<img class="stamptour-img" th:src="${gu.img}?:@{/images/bookstampImg1.jpg}">
+				</a>
+				<div class="stamptour-content">도장 찍는 재미! <br/> <span th:text="${gu.name}">강남구</span> 독립서점으로 스탬프 투어를 떠나보세요</div>
 			</div>
 		</section>
 	</main>

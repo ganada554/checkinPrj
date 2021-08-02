@@ -1,21 +1,52 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.themeleaf.org"
 	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
-	layout:decorator="/inc/layout">
+	layout:decorator="inc/layout">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="/css/common.css" rel="stylesheet">
+    <link href="/css/index.css" rel="stylesheet">
+   	<script src="/js/index.js"></script>
     <title>Home</title>
 </head>
 <body>
       <main layout:fragment="main">
-      	 <div class="title">Home</div>
       	<section> 
-			스탬프 루트 홍보
-			지도
-			가까운 서점 목록
+			<div class="title">이 서점은 어떠세요?</div>
+				<div class="bookstore-card">
+				<input type="hidden" th:value="${b.id}">
+					<img th:src="${b.bgImg}?${b.bgImg}:@{/images/books.png}" class="bookstore-bg">
+					<img th:src="${b.logoImg}?:@{/images/books.png}" class="bookstore-logo">
+					<span class="hi-span">
+						<span th:text="${b.name}"></span>
+						<span th:text="${b.guName}"  class="small-font"></span>
+					</span>
+						<span th:text="${b.hashtagName}" class="small-font hi right"></span>
+				</div>
+			<div class="title">실시간 스탬프 현황</div>
+				<div class="stamp-card">
+					<div th:each="s, index:${stamp}" class="each-stamp-card" th:if="${index.index}<5">
+						<span th:text="${s.name}"></span>
+						<span class="right">
+							<span th:text="${s.nickname}"></span>
+							<span th:text="${s.newRegDate}" class="small-font"></span>
+						</span>
+						<br>
+						<span th:text="${s.guName}" class=" small-font"></span>
+					</div>
+				</div>
+    		<div class="title">최근 리뷰</div>
+				<div class="review-card">
+					<div th:each="r, index:${review}" class="each-review-card" th:if="${index.index}<6">
+						<img th:src="${r.imagePath}?:@{/images/bs.jpg}" class="review-img">
+						<span class="hi-span">
+							<span class="truncate" th:text="${r.bookstoreName}"></span>
+							<span th:text="${r.nickName}" class="small-font right"></span>
+						</span>
+					</div>
+				</div>
 		</section>
 	</main>
 </body>

@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.themeleaf.org"
 	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
-	layout:decorator="/inc/layout">
+	layout:decorator="inc/layout">
 
 <head>
 <meta charset="UTF-8">
@@ -16,13 +16,11 @@
 	<main layout:fragment="main">
 		<div class="title">ADMIN</div>
 		<nav class="mini-nav">
-			<a href="">서점</a>
-			<a th:href="@{/admin/member}" class="mini-nav-page">회원</a>
-			<a href="">스탬프 투어</a>
-			<a href="">후기</a>
-			<a href="">해시태그</a>
+			<a href="/admin/bookstore">서점</a>
+			<a href="/admin/member" class="mini-nav-page">회원</a>
+			<a href="/admin/review">리뷰</a>
+			<a href="/admin/hash/list">해시태그</a>
 		</nav>
-
 
 		<section>
 			<form class="operation">
@@ -57,7 +55,7 @@
 						<a th:href="@{/admin/member/2(id=${m.id})}">서점지기</a>
 						<a th:href="@{/admin/member/3(id=${m.id})}">회원</a>
 					</span>
-					<a th:href="@{/admin/member/delete(id=${m.id})}" class="btn">탈퇴</a>
+					<a th:href="@{/admin/member/delete(id=${m.id})}" class="btn"  onclick="if(!confirm('정말 탈퇴시키겠습니까?')) return false;" >탈퇴</a>
 					<input type="hidden" value="${m.id}">
 				</div>
 			</div>

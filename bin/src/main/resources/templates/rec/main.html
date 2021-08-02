@@ -1,7 +1,8 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org"
 	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
-	layout:decorator="/inc/layout">
+	layout:decorator="inc/layout">
+	
 <head>
 <meta charset="UTF-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -9,39 +10,40 @@
 <title>추천탭 메인 페이지</title>
 <link href="/css/rec/main.css" rel="stylesheet">
 <link href="/css/common.css" rel="stylesheet">
+
 <script type="text/javascript" src="/js/rec/main.js"></script>
 </head>
 
 
-
 <main layout:fragment="main">
 	<div class="title"></div>
-	<section>
-	<form action="/rec/result" method="post">
-		<select name="f">
-			<option value="1">일반 검색</option>
-			<option value="2">해시태그</option>
-		</select> 
-		<input type="text" name="q"> 
-		<input type="submit" class="btn" value="검색"> 
-		<select name="h">
-			<option selected value="0">해시태그 목록</option>
-			<option th:each="h:${hlist}" th:value="${h.id}" value="1" th:text="${h.name}">일반 검색</option>
-		</select>
-	</form>
+	
+	<section id="search">
+		<form method="post">
+			<select name="f">
+				<option value="1">서점</option>
+				<option value="2">해시태그</option>
+			</select> 
+			<input class="search" type="text" name="q"> 
+			<input type="submit" class="btn subBtn" value="검색"> 
+			<select name="h">
+				<option selected value="0">해시태그 목록</option>
+				<option th:each="h:${hlist}" th:value="${h.id}" value="1" th:text="${h.name}">일반 검색</option>
+			</select>
+		</form>
 	</section>
 
-	<section>
-	<div class="recTitle">#고양이</div>
+	<section id="content">
+	<div class="recTitle" th:text="${hlist1Name}"></div>
 	<div class="slide_wrapper">
-		<div class="slides"><!--  onClick="location.href='/bookstore/detail?id=${l1.id}'" -->
+		<div class="slides">
 			<div th:each="l1:${hlist1}" class="bookstore">
-				<div class="bs" >
+				<div th:onclick="'window.location.href=\''+@{/bookstore/detail/{id}(id=${l1.id})}+'\''" class="bs" >
 					<div>
-						<img th:src="@{/upload/bookstore/}+${l1.bgImg}">
+						<img th:src="${l1.bgImg}" src="/images/books.png">
 					</div>
 					<div class="bsInfo">
-						<span th:text="${l1.name}"> 책방이름</span> 
+						<span class="truncate" th:text="${l1.name}"> 책방이름</span> 
 					</div>
 				</div>
 			</div>
@@ -49,37 +51,38 @@
 	</div>
 	
 	
-	<div class="recTitle">#큐레이터</div>
+	<div  class="recTitle" th:text="${hlist2Name}">#큐레이터</div>
 	<div class="slide_wrapper">
 		<ul class="slides">
-			<li th:each="l2:${hlist2}" class="bookstore">
-				<div>
+			<div th:each="l2:${hlist2}" class="bookstore">
+				<div th:onclick="'window.location.href=\''+@{/bookstore/detail/{id}(id=${l2.id})}+'\''" class="bs">
 					<div>
-						<img src="/images/bs.jpg" alt="">
+						<img th:src="${l2.bgImg}" src="/images/books.png">
 					</div>
-					<div class="bsInfo">
-						<span th:text="${l2.name}"> 책방이름</span> 
+					<div  class="bsInfo">
+						<span class="truncate" th:text="${l2.name}"> 책방이름</span> 
 					</div>
 				</div>
-			</li>
+			</div>
 		</ul>
 	</div>
 	
-	<div class="recTitle">#영화</div>
+	<div class="recTitle" th:text="${hlist3Name}">#영화</div>
 	<div class="slide_wrapper">
 		<ul class="slides">
-			<li th:each="l3:${hlist3}" class="bookstore">
-				<div>
+			<div th:each="l3:${hlist3}" class="bookstore">
+				<div  th:onclick="'window.location.href=\''+@{/bookstore/detail/{id}(id=${l3.id})}+'\''" class="bs">
 					<div>
-						<img src="/images/bs.jpg" alt="">
+						<img th:src="${l3.bgImg}" src="/images/books.png">
 					</div>
 					<div class="bsInfo">
-						<span th:text="${l3.name}"> 책방이름</span> 
+						<span class="truncate" th:text="${l3.name}"> 책방이름</span> 
 					</div>
 				</div>
-			</li>
+			</div>
 		</ul>
 	</div>
 	</section>
+	
 </main>
 </html>

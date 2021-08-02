@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.themeleaf.org"
 	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
-	layout:decorator="/inc/layout">
+	layout:decorator="inc/layout">
 
 <head>
     <meta charset="UTF-8">
@@ -26,7 +26,7 @@
             
             <span>ㄴ~ㄷ</span>
             <div class="slide">
-                <div  th:each="gu, i:${gu}" th:if="7< ${i.index} and ${i.index} <14" class="imgdiv">
+                <div  th:each="gu, i:${gu}" th:if="7< ${i.index} and ${i.index} <12" class="imgdiv">
                 	<a th:href="@{/bookstamp/detail(id=${gu.id})}"  >
                     <img class="img" th:src="${gu.img}?:@{/images/bookstampImg1.jpg}"></a>
                 </div>
@@ -34,7 +34,7 @@
                 
             <span>ㅁ~ㅅ</span>
             <div class="slide">
-                <div th:each="gu, i:${gu}" th:if="13<${i.index} and ${i.index}<19" class="imgdiv">
+                <div th:each="gu, i:${gu}" th:if="11<${i.index} and ${i.index}<18" class="imgdiv">
                 	<a th:href="@{/bookstamp/detail(id=${gu.id})}"  >
                     <img class="img" th:src="${gu.img}?:@{/images/bookstampImg1.jpg}"></a>
                 </div>
@@ -42,7 +42,7 @@
                 
             <span>ㅇ</span>
             <div class="slide">
-                <div  th:each="gu, i:${gu}" th:if="18<${i.index} and ${i.index}<23" class="imgdiv">
+                <div  th:each="gu, i:${gu}" th:if="17<${i.index} and ${i.index}<22" class="imgdiv">
                 	<a th:href="@{/bookstamp/detail(id=${gu.id})}"  >
                     <img class="img" th:src="${gu.img}?:@{/images/bookstampImg1.jpg}"></a>
                 </div>
@@ -50,7 +50,7 @@
                 
             <span>ㅈ</span>
             <div class="slide">
-                <div  th:each="gu, i:${gu}" th:if="22<${i.index}" class="imgdiv">
+                <div  th:each="gu, i:${gu}" th:if="21<${i.index}" class="imgdiv">
                 	<a th:href="@{/bookstamp/detail(id=${gu.id})}"  >
                     <img class="img" th:src="${gu.img}?:@{/images/bookstampImg1.jpg}"></a>
                 </div>

@@ -5,9 +5,25 @@
     font-style: normal;
 }
 
+select{
+	font-family: 'TmoneyRoundWindRegular';
+	border-radius: 10px;
+	background-color: white;
+	padding: 2px 0 2px 5px;
+}
+
+.font {
+	font-family: 'TmoneyRoundWindRegular';
+}
+
+input{
+		border-radius: 10px;
+		border: 1px solid gray;
+}
+	
 :root {
-    --primary: rgb(115, 168, 174);
-    --secondary: #0d7785;
+    --primary: #bdae9d;
+    --secondary: #a3907a;
     --danger: #fb0603;
     --gray: #f8f9fa;
   }
@@ -39,7 +55,7 @@ ul,ol{
     padding: 4px 14px;
     cursor: pointer;
     transition: all 0.4s;
-    border-radius: 10px;
+    border-radius: 8px;
 }
 
 
@@ -61,5 +77,6 @@ section{
     text-align: center;
     margin: 30px 0;
     font-size: 30px;
+    display: block;
 }
 

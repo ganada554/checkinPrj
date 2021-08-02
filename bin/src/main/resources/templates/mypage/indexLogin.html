@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.themeleaf.org"
 	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
-	layout:decorator="/inc/layout">
+	layout:decorator="inc/layout">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -16,16 +16,15 @@
 <body>
     <main layout:fragment="main">
         <div class="title">마이페이지</div>
-        <section class="profile-box">
+        <section class="profile-box center">
            	<a th:href="@{/login}">로그인</a>
-            <a href="javascript:kakaoLogin();" class="kakao">카카오 로그인</a>    
-            <a th:href="@{/signup}" class="none">회원이 아니신가요?</a>
+            <a href="javascript:kakaoLogin();" class="kakao">카카오 로그인</a>
+            <span>회원이 아니신가요?</span>    
+            <a th:href="@{/signup}" class="none">회원 가입</a>
         </section>
 
-        <section>
-                <div class="dash-board">
-                    로그인하시면 취향을 분석해 드려요
-                </div>
+        <section class="center">
+               <span>로그인하시면 메뉴를 볼 수 있어요</span>
         </section>
 
     </main>

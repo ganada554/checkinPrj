@@ -23,62 +23,54 @@ section{
     }
 
 
-.review-card{
-    margin: 10px 0;
-    border: 1px solid black;
-    border-radius: 15px;
-    padding: 15px;
+	.logo-img {
+		background-color: white;
+		width: 50px;
+		height: 50px;
+		border-radius: 50%;
+	} 
 
-    position: relative;
+.small-title {
+	margin-left: 10px;
+}	
+	
+.bookstore-info{
+	margin-top: 20px;
 }
-
-    .review-card .hi-span{
-        height: 50px;
-    }
-
-    .review-card span{
-        display:flex;
-        flex-direction: row;
-    }
-
-    .review-card .review-img{
-        width: 50px;
-        height: 50px;
-        border: 1px solid black;
-
-        position: absolute;
-        right: 20px;
-        top: 15px;
-    }
-
-    .review-card .hi-span span:nth-child(1){
-        font-size: 20px;
-    }
-
-    .review-card .hi-span span:nth-child(2){
-        font-size: 15px;
-        margin-left: 10px;
-    }
-
-.bottom-section{
-    margin-top: 30px;
-}
-
 
 .bookstore-card{
-    margin: 10px 0;
-    border: 1px solid black;
-    border-radius: 15px;
-    padding: 15px;
+	border: 1px solid gray;
+	border-radius: 10px;
+	padding: 10px;
+	margin: 10px;
 }
-    .bookstore-card .card-img{
-        width: 50px;
-        height: 50px;
-        border-radius: 50px;
-        
-        display: inline-block;
+.tap-menu>span:nth-child(1) {
+	border-right: none;
+}
+
+	.bookstore-info .info>div {
+		display: flex;
+		line-height: 20px;
+	}
+			
+	.bookstore-info .info img {
+		width: 20px;
+		height: 20px;
 	}
 	
-	.bookstore-card .hi-span{
-		display:inline;
+	.bookstore-info .info div {
+		font-size: 12px;
+		margin: 0 0 2px 5px;
 	}
+	
+.bookstore-name{
+	position:relative;
+	display: flex;
+	align-items: center;
+	margin-bottom: 10px;
+	margin-left: 10px;
+}
+
+.bookstore-name div{
+	margin-left: 15px;
+}

@@ -5,6 +5,9 @@
 	border: 1px solid gray;
 	padding: 10px;
 }
+input {
+	font-family: 'TmoneyRoundWindRegular';
+}
 
 form{
 	display: flex;
@@ -22,6 +25,10 @@ form{
 
 .btn-list .btn{
 	padding: 14px;
+}
+
+.btn-list input {
+	font-size: 15px;
 }
 
 input[type="submit"]{

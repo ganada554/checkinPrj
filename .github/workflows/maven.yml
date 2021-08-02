@@ -8,6 +8,7 @@ on: #이벤트를 감지하며 워크플로우를 실행시키는 조건
     branches: [ master ] #master 브렌치로 push할 때 실행
   pull_request:
     branches: [ master ]
+  workflow_dispatch:
 
 jobs:
   build:

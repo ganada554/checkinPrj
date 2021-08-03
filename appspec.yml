@@ -3,4 +3,4 @@ os: linux
 
 files:
   - source: /
-    destination: /home/ec2-user/build
+    destination: /home/ec2-user/build  #저장 위치

@@ -8,6 +8,7 @@ on: #이벤트를 감지하며 워크플로우를 실행시키는 조건
     branches: [ master ] #master 브렌치로 push할 때 실행
   pull_request:
     branches: [ master ]
+  workflow_dispatch: #수동 시작
 
 jobs:
   build:
@@ -23,3 +24,20 @@ jobs:
         distribution: 'adopt'
     - name: Build with Maven
       run: mvn -B package --file pom.xml
+      
+    - name: Make zip file
+      run: zip -qq -r ./$GITHUB_SHA.zip .
+      shell: bash
+
+    - name: Configure AWS credentials
+      uses: aws-actions/configure-aws-credentials@v1
+      with:
+        aws-access-key-id: $
+        aws-secret-access-key: $
+        aws-region: $
+        
+    - name: Upload to S3
+      run: aws s3 cp --region us-east-2 ./$GITHUB_SHA.zip s3://checkin-deploy/$PROJECT_NAME/$GITHUB_SHA.zip
+
+    - name: Code Deploy
+      run: aws deploy create-deployment --application-name checkinApp --deployment-config-name CodeDeployDefault.OneAtATime --deployment-group-name dev --s3-location bucket=checkin-deploy,bundleType=zip,key=$PROJECT_NAME/$GITHUB_SHA.zip

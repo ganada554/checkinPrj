@@ -6,7 +6,7 @@ files:
     destination: /home/ec2-user/build  #저장 위치
 
 permissions:
-  - object: /home/ec2-user/build/
+  - object: /home/ec2-user/build
     owner: ubuntu
     group: ubuntu
     mode: 755
